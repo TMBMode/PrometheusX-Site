@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Fonts */
+@font-face {
+  font-family: 'Saol Display Light';
+  src: url('https://prometheusx.lemoc.uno/Font/SaolDisplay-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Saol Display Light Italic';
+  src: url('https://prometheusx.lemoc.uno/Font/SaolDisplay-LightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Montreal';
+  src: url('https://prometheusx.lemoc.uno/Font/NeueMontreal-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Prevent overscroll rubber band effect */
+html, body {
+  overscroll-behavior: none;
+  overflow: hidden;
+}
+
+/* Smooth scrolling for better UX */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Custom font utility classes */
+.font-saol-light {
+  font-family: 'Saol Display Light', serif;
+}
+
+.font-saol-light-italic {
+  font-family: 'Saol Display Light Italic', serif;
+}
+
+.font-neue-montreal {
+  font-family: 'Neue Montreal', sans-serif;
+}
