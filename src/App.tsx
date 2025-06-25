@@ -45,7 +45,7 @@ function App() {
         className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
           !showIntro 
             ? 'opacity-100 scale-100' 
-            : 'opacity-0 scale-90 !pointer-events-none'
+            : 'opacity-0 scale-90 pointer-events-none display-none'
         }`}
       >
         <div 
