@@ -110,8 +110,8 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
       let rect: Rectangle;
       
       while (!validPosition && attempts < 200) {
-        // 0.3% chance to create an empty box, equal to Genshin gacha
-        const isEmpty = Math.random() < 0.003;
+        // 10% chance to create an empty box
+        const isEmpty = Math.random() < 0.1;
         
         let width: number, height: number, actualWidth: number, actualHeight: number, imageIndex: number | null;
         
@@ -404,7 +404,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
 
           {/* Rectangle */}
           <div
-            className={`absolute border-2 border-white transition-all duration-500 transform hover:invert ${
+            className={`absolute border-2 border-white transition-all duration-500 transform pointer-events-auto hover:scale-105 hover:invert ${
               visibleRects.has(rect.id)
                 ? 'opacity-100 scale-100' 
                 : 'opacity-0 scale-75'

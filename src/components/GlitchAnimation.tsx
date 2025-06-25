@@ -84,7 +84,7 @@ const GlitchAnimation: React.FC = () => {
 
   return (
     <div
-      className="absolute pointer-events-none z-20 transition-all duration-200"
+      className="absolute pointer-events-auto z-20 transition-all duration-200 transform hover:scale-105"
       style={{
         left: `${boxPosition.x}px`,
         bottom: `${boxPosition.y}px`,
