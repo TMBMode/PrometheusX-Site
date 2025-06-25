@@ -46,7 +46,7 @@ const CustomCursor: React.FC = () => {
         width: '10dvmin',
         height: '10dvmin',
         backgroundImage: `url(${RESOURCE_ENDPOINT}/Pointer/pointer1.png)`,
-        backgroundSize: '5dvmin 5dvmin',
+        backgroundSize: '10dvmin 10dvmin',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
       }}
