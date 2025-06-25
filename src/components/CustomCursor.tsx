@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { RESOURCE_ENDPOINT } from '../Constants';
 
-const CURSORSIZE = 32
+const CURSORSIZE = 64
 
 const CustomCursor: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -95,7 +95,7 @@ const CustomCursor: React.FC = () => {
         backgroundSize: `${CURSORSIZE}px ${CURSORSIZE}px`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        transform: isClicked ? 'rotate(-10deg)' : 'rotate(0deg)',
+        transform: isClicked ? 'rotate(-15deg)' : 'rotate(0deg)',
         transformOrigin: 'center',
       }}
     />
