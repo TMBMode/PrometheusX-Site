@@ -100,3 +100,13 @@ img {
 .font-cinzel {
   font-family: 'Cinzel', serif;
 }
+
+/* Pointer events class for intro page state */
+.pointer-events-auto-main {
+  pointer-events: auto;
+}
+
+/* When on intro page, disable pointer events for main content */
+.intro-active .pointer-events-auto-main {
+  pointer-events: none;
+}

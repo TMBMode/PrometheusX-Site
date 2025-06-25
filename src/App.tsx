@@ -25,7 +25,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 relative overflow-hidden">
+    <div className={`min-h-screen bg-gradient-to-br from-black to-gray-900 relative overflow-hidden ${showIntro ? 'intro-active' : ''}`}>
       {/* Custom Cursor */}
       <CustomCursor />
       
@@ -42,10 +42,10 @@ function App() {
 
       {/* Main Site */}
       <div 
-        className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+        className={`absolute inset-0 transition-all duration-1000 ease-in-out pointer-events-auto-main ${
           !showIntro 
             ? 'opacity-100 scale-100' 
-            : 'opacity-0 scale-90 pointer-events-none'
+            : 'opacity-0 scale-90'
         }`}
       >
         <div 
