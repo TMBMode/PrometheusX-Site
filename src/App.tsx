@@ -48,7 +48,8 @@ function App() {
       if (isScrollingRef.current || isTransitioning) return;
       
       e.preventDefault();
-      
+
+      console.log(e.deltaY)
       const direction = e.deltaY > 0 ? 1 : -1;
       const newSection = Math.max(0, Math.min(sections.length - 1, currentSection + direction));
       
