@@ -41,8 +41,8 @@ const CustomCursor: React.FC = () => {
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
       style={{
-        left: `calc(${mousePosition.x}px - 2.5dvmin)`, // Center the cursor (half of 2dvmin)
-        top: `calc(${mousePosition.y}px - 2.5dvmin)`,  // Center the cursor (half of 2dvmin)
+        left: `calc(${mousePosition.x}px - 2.5dvmin)`, // Center the cursor
+        top: `calc(${mousePosition.y}px - 2.5dvmin)`,  // Center the cursor
         width: '5dvmin',
         height: '5dvmin',
         backgroundImage: `url(${RESOURCE_ENDPOINT}/Pointer/pointer1.png)`,
