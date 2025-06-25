@@ -60,8 +60,6 @@ const HomePage: React.FC = () => {
         <div className="absolute top-8 left-8">
           <Logo 
             className="hover:brightness-150 transition-all duration-300"
-            width={200}
-            height={46}
           />
         </div>
         
