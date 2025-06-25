@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
-import NetworkAnimation from '../components/home/NetworkAnimation';
-import TypingAnimation from '../components/home/TypingAnimation';
-import GlitchAnimation from '../components/home/GlitchAnimation';
+import NetworkAnimation from './NetworkAnimation';
+import TypingAnimation from './TypingAnimation';
+import GlitchAnimation from './GlitchAnimation';
 import { RESOURCE_ENDPOINT } from '../Constants';
 
 const HomePage: React.FC = () => {

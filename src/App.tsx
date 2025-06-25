@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import IntroPage from './pages/IntroPage';
-import HomePage from './pages/HomePage';
-import VideoPage from './pages/VideoPage';
-import TeamPage from './pages/TeamPage';
-import DescriptionPage from './pages/DescriptionPage';
+import IntroPage from './components/IntroPage';
+import HomePage from './components/HomePage';
+import VideoPage from './components/VideoPage';
+import TeamPage from './components/TeamPage';
+import DescriptionPage from './components/DescriptionPage';
 
 function App() {
   const [currentSection, setCurrentSection] = useState(0);
