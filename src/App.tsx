@@ -36,7 +36,7 @@ function App() {
       // Reset scrolling flag after animation
       setTimeout(() => {
         isScrollingRef.current = false;
-      }, 1000);
+      }, 800);
     }
   };
 
