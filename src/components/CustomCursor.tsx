@@ -209,7 +209,7 @@ const CustomCursor: React.FC = () => {
         backgroundSize: `${CURSORSIZE}px ${CURSORSIZE}px`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        transform: isClicked ? 'rotate(5deg)' : 'rotate(25deg)',
+        transform: isClicked ? 'rotate(0deg)' : 'rotate(20deg)',
         transformOrigin: 'center',
       }}
     />
