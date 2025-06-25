@@ -1,13 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { RESOURCE_ENDPOINT } from '../Constants';
 
-const CURSORSIZE = 64
+const CURSORSIZE = 32
 
 const CustomCursor: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
+
+  // Preload the cursor image
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      setImageLoaded(true);
+    };
+    img.onerror = () => {
+      // If image fails to load, still show cursor (fallback)
+      setImageLoaded(true);
+    };
+    img.src = `${RESOURCE_ENDPOINT}/Pointer/pointer1.png`;
+  }, []);
 
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {
@@ -15,7 +29,9 @@ const CustomCursor: React.FC = () => {
     };
 
     const handleMouseEnter = () => {
-      setIsVisible(true);
+      if (imageLoaded) {
+        setIsVisible(true);
+      }
     };
 
     const handleMouseLeave = () => {
@@ -37,8 +53,10 @@ const CustomCursor: React.FC = () => {
     document.addEventListener('mousedown', handleMouseDown);
     document.addEventListener('mouseup', handleMouseUp);
 
-    // Show cursor initially if mouse is already over the page
-    setIsVisible(true);
+    // Show cursor initially if mouse is already over the page and image is loaded
+    if (imageLoaded) {
+      setIsVisible(true);
+    }
 
     return () => {
       document.removeEventListener('mousemove', updateMousePosition);
@@ -47,13 +65,26 @@ const CustomCursor: React.FC = () => {
       document.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, []);
+  }, [imageLoaded]);
+
+  // Apply cursor hiding only when custom cursor is visible
+  useEffect(() => {
+    if (isVisible && imageLoaded) {
+      document.body.style.cursor = 'none';
+    } else {
+      document.body.style.cursor = '';
+    }
+
+    return () => {
+      document.body.style.cursor = '';
+    };
+  }, [isVisible, imageLoaded]);
 
   return (
     <div
       ref={cursorRef}
       className={`fixed pointer-events-none z-[9999] transition-opacity duration-150 ${
-        isVisible ? 'opacity-100' : 'opacity-0'
+        isVisible && imageLoaded ? 'opacity-100' : 'opacity-0'
       }`}
       style={{
         left: mousePosition.x - CURSORSIZE/2,
@@ -64,7 +95,7 @@ const CustomCursor: React.FC = () => {
         backgroundSize: `${CURSORSIZE}px ${CURSORSIZE}px`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        transform: isClicked ? 'rotate(-15deg)' : 'rotate(0deg)',
+        transform: isClicked ? 'rotate(-10deg)' : 'rotate(0deg)',
         transformOrigin: 'center',
       }}
     />
