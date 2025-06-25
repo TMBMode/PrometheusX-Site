@@ -356,7 +356,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
   }, []);
 
   return (
-    <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute inset-0">
       {/* SVG for connections */}
       <svg className="absolute inset-0 w-full h-full z-[2]">
         {connections.map((connection, index) => {
