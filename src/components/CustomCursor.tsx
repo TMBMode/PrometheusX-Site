@@ -198,7 +198,7 @@ const CustomCursor: React.FC = () => {
     <div
       ref={cursorRef}
       className={`fixed pointer-events-none z-[9999] transition-opacity duration-150 ${
-        shouldShowCursor ? 'opacity-100' : 'opacity-0'
+        shouldShowCursor ? 'opacity-90' : 'opacity-0'
       }`}
       style={{
         left: mousePosition.x - CURSORSIZE/2,
