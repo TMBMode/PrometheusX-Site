@@ -61,6 +61,21 @@ img {
   pointer-events: none;
 }
 
+/* Enhanced scroll snap behavior */
+.snap-y {
+  scroll-snap-type: y mandatory;
+}
+
+.snap-start {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Smooth scroll container */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
 /* Custom font utility classes */
 .font-saol-light {
   font-family: 'Saol Display Light', serif;
