@@ -390,7 +390,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
           {/* Dimensions label (above, left-aligned) - Only for non-empty boxes */}
           {!rect.isEmpty && (
             <div
-              className={`absolute text-[8px] font-mono text-white/30 transition-all duration-500 hover:invert ${
+              className={`absolute text-[8px] font-mono text-white/30 transition-all duration-500 ${
                 visibleRects.has(rect.id) ? 'opacity-100' : 'opacity-0'
               }`}
               style={{
