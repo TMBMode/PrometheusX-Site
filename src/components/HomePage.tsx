@@ -59,7 +59,7 @@ const HomePage: React.FC = () => {
         {/* Logo */}
         <div className="absolute top-8 left-8">
           <img 
-            src={`${RESOURCE_ENDPOINT}/Logo/logo-prometheusx.svg`}
+            src={`${RESOURCE_ENDPOINT}/Logo/logo-prometheusx-v2.svg`}
             alt="PrometheusX Logo" 
             className="h-16 w-auto hover:brightness-150 transition-all duration-300"
           />
