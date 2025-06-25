@@ -55,7 +55,7 @@ const HomePage: React.FC = () => {
       )}
       
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col">
+      <div className="relative z-10 h-full flex flex-col pointer-events-none">
         {/* Logo */}
         <div className="absolute top-8 left-8">
           <Logo 
