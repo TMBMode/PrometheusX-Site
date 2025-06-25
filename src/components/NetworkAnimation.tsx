@@ -266,7 +266,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
 
   // Animate disappearing
   const animateDisappearing = async (rects: Rectangle[]): Promise<void> => {
-    await delay(7000); // Display for 7 seconds
+    await delay(6000); // Display for 6 seconds
     
     // Fade out dots and lines together instantly
     setVisibleDots(new Set());
