@@ -28,7 +28,7 @@ const DescriptionPage: React.FC = () => {
     <section className="relative min-h-screen w-full bg-gradient-to-br from-black to-gray-900 py-20">
       <div className="relative z-10 max-w-7xl mx-auto px-8">
         <div className="text-center mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-neue-montreal text-white mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-cinzel text-white mb-6">
             Lorem Ipsum Headline
           </h2>
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto font-saol-light">

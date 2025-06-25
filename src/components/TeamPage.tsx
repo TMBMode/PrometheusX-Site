@@ -366,7 +366,7 @@ const TeamPage: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-8 py-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-neue-montreal text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-cinzel text-white">
             The Minds Behind PrometheusX
           </h2>
         </div>
