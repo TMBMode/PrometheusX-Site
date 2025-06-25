@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { RESOURCE_ENDPOINT } from '../Constants';
 
-const CURSORSIZE = 80
+let CURSORSIZE = 80
 
 const CustomCursor: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -16,6 +16,7 @@ const CustomCursor: React.FC = () => {
 
   // Detect if device has a cursor (mouse/trackpad)
   useEffect(() => {
+    window.c = (v) => { CURSORSIZE = v }
     const detectCursorCapability = () => {
       // Check for pointer capability
       const hasPointer = window.matchMedia('(pointer: fine)').matches;
