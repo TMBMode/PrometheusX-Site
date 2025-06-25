@@ -183,8 +183,8 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
     const newConnections: Connection[] = [];
     
     rects.forEach((rect, index) => {
-      // weighted random 70% 2; 20% 1; 10% 3
-      const connectionCount = Math.random() < 0.7 ? 2 : (Math.random() < 0.666 ? 1 : 3);
+      // weighted random 50% 2; 40% 1; 10% 3
+      const connectionCount = Math.random() < 0.5 ? 2 : (Math.random() < 0.8 ? 1 : 3);
       const availableTargets = rects
         .map((_, i) => i)
         .filter(i => i !== index);
