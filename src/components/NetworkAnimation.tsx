@@ -405,7 +405,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
 
           {/* Rectangle */}
           <div
-            className={`absolute border-2 border-white transition-all duration-500 transform pointer-events-auto-main hover:invert ${
+            className={`absolute border-2 border-white transition-all duration-500 transform ${
               visibleRects.has(rect.id)
                 ? 'opacity-100 scale-100' 
                 : 'opacity-0 scale-75'
@@ -421,7 +421,16 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
                 backgroundPosition: 'center',
               })
             }}
-          />
+          >
+            {/* Invert Overlay on Hover */}
+            <div
+              className="absolute inset-0 z-50 opacity-0 hover:opacity-100 pointer-events-auto-main"
+              style={{
+                backgroundColor: 'white',
+                mixBlendMode: 'difference',
+              }}
+            />
+          </div>
 
           {/* Date label (below, right-aligned) - Only for non-empty boxes */}
           {!rect.isEmpty && (
