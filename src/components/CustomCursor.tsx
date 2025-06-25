@@ -165,7 +165,7 @@ const CustomCursor: React.FC = () => {
   // Apply cursor hiding only when custom cursor is visible and not over iframe
   useEffect(() => {
     if (hasCursor && isVisible && imageLoaded && !isOverIframe) {
-      document.body.style.cursor = 'none';
+      document.body.style.cursor = 'none !important';
     } else {
       document.body.style.cursor = '';
     }
