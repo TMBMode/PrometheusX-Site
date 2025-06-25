@@ -425,7 +425,11 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
           
           {/* Invert Filter */}
           <div
-            className="absolute opacity-0 peer-hover/rect:opacity-100 transition-opacity duration-500 z-[4] bg-white mix-blend-difference"
+            className={`absolute transition-all duration-500 transform z-[4] bg-white mix-blend-difference opacity-0 ${
+              visibleRects.has(rect.id)
+                ? 'peer-hover/rect:opacity-100 scale-100' 
+                : 'scale-75'
+            } ${rect.isEmpty ? 'bg-transparent' : ''}`}
             style={{
               left: rect.x - rect.width/2,
               top: rect.y - rect.height/2,
