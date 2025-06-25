@@ -27,11 +27,6 @@
   font-display: swap;
 }
 
-/* Custom Cursor */
-* {
-  cursor: url('https://prometheusx.lemoc.uno/Pointer/pointer1.png') 16 16, auto !important;
-}
-
 /* Prevent overscroll rubber band effect */
 html, body {
   overscroll-behavior: none;
