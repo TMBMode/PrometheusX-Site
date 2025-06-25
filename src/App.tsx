@@ -46,10 +46,10 @@ function App() {
     // Mouse wheel handler
     const handleWheel = (e: WheelEvent) => {
       if (isScrollingRef.current || isTransitioning) return;
+      if (math.abs(e.deltaY) < 2) return;
       
       e.preventDefault();
 
-      console.log(e.deltaY)
       const direction = e.deltaY > 0 ? 1 : -1;
       const newSection = Math.max(0, Math.min(sections.length - 1, currentSection + direction));
       
