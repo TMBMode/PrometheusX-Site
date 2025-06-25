@@ -45,10 +45,10 @@ const CustomCursor: React.FC = () => {
       style={{
         left: mousePosition.x - 16, // Center the 32px image (16px offset)
         top: mousePosition.y - 16,  // Center the 32px image (16px offset)
-        width: `${cursorSize}px`,
-        height: '32px',
+        width: `${CURSORSIZE}px`,
+        height: `${CURSORSIZE}px`,
         backgroundImage: `url(${RESOURCE_ENDPOINT}/Pointer/pointer1.png)`,
-        backgroundSize: '32px 32px',
+        backgroundSize: `${CURSORSIZE}px ${CURSORSIZE}px`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
       }}
