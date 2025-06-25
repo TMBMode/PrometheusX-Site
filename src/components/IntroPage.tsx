@@ -1,6 +1,5 @@
 import React from 'react';
 import { ArrowRight, Gamepad2 } from 'lucide-react';
-import { RESOURCE_ENDPOINT } from '../Constants';
 
 interface IntroPageProps {
   onEnter: () => void;
@@ -13,7 +12,7 @@ const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${RESOURCE_ENDPOINT}/Background/bg-dark.jpg)`,
+          backgroundImage: `url(/resources/Background/bg-dark.jpg)`,
         }}
       />
       
@@ -56,7 +55,7 @@ const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
         {/* Logo */}
         <div className="absolute top-8 left-8">
           <img 
-            src={`${RESOURCE_ENDPOINT}/Logo/logo-prometheusx-v2.svg`}
+            src="/resources/Logo/logo-prometheusx-v2.svg"
             alt="PrometheusX Logo" 
             className="h-16 w-auto hover:brightness-150 transition-all duration-300"
           />

@@ -3,7 +3,6 @@ import { ChevronDown } from 'lucide-react';
 import NetworkAnimation from './NetworkAnimation';
 import TypingAnimation from './TypingAnimation';
 import GlitchAnimation from './GlitchAnimation';
-import { RESOURCE_ENDPOINT } from '../Constants';
 
 const HomePage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -31,7 +30,7 @@ const HomePage: React.FC = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(${RESOURCE_ENDPOINT}/Background/bg-brain.jpg)`,
+          backgroundImage: `url(/resources/Background/bg-brain.jpg)`,
         }}
       />
       
@@ -59,7 +58,7 @@ const HomePage: React.FC = () => {
         {/* Logo */}
         <div className="absolute top-8 left-8">
           <img 
-            src={`${RESOURCE_ENDPOINT}/Logo/logo-prometheusx-v2.svg`}
+            src="/resources/Logo/logo-prometheusx-v2.svg"
             alt="PrometheusX Logo" 
             className="h-16 w-auto hover:brightness-150 transition-all duration-300"
           />

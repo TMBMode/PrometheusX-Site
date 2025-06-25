@@ -1,1 +1,0 @@
-export const RESOURCE_ENDPOINT = 'https://prometheusx.lemoc.uno';

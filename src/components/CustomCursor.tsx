@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { RESOURCE_ENDPOINT } from '../Constants';
 
 let CURSORSIZE = 80
 
@@ -66,7 +65,7 @@ const CustomCursor: React.FC = () => {
       // If image fails to load, still show cursor (fallback)
       setImageLoaded(true);
     };
-    img.src = `${RESOURCE_ENDPOINT}/Pointer/pointer1.png`;
+    img.src = '/resources/Pointer/pointer1.png';
   }, [hasCursor]);
 
   // Check if mouse is over an iframe
@@ -207,7 +206,7 @@ const CustomCursor: React.FC = () => {
         top: mousePosition.y - CURSORSIZE/2,
         width: `${CURSORSIZE}px`,
         height: `${CURSORSIZE}px`,
-        backgroundImage: `url(${RESOURCE_ENDPOINT}/Pointer/pointer1.png)`,
+        backgroundImage: `url(/resources/Pointer/pointer1.png)`,
         backgroundSize: `${CURSORSIZE}px ${CURSORSIZE}px`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',

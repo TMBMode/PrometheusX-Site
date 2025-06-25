@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { RESOURCE_ENDPOINT } from '../Constants';
 
 interface Rectangle {
   id: number;
@@ -67,7 +66,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
         }); // Fallback
       };
       
-      img.src = `${RESOURCE_ENDPOINT}/RandomTiles/${index}.jpg`;
+      img.src = `/resources/RandomTiles/${index}.jpg`;
     });
   };
 
@@ -387,7 +386,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
               top: rect.y - rect.height/2,
               width: rect.width,
               height: rect.height,
-              backgroundImage: `url(${RESOURCE_ENDPOINT}/RandomTiles/${rect.imageIndex}.jpg)`,
+              backgroundImage: `url(/resources/RandomTiles/${rect.imageIndex}.jpg)`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}

@@ -5,7 +5,7 @@
 /* Custom Fonts */
 @font-face {
   font-family: 'Saol Display Light';
-  src: url('https://prometheusx.lemoc.uno/Font/SaolDisplay-Light.woff2') format('woff2');
+  src: url('/resources/Font/SaolDisplay-Light.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -13,7 +13,7 @@
 
 @font-face {
   font-family: 'Saol Display Light Italic';
-  src: url('https://prometheusx.lemoc.uno/Font/SaolDisplay-LightItalic.woff2') format('woff2');
+  src: url('/resources/Font/SaolDisplay-LightItalic.woff2') format('woff2');
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -21,7 +21,7 @@
 
 @font-face {
   font-family: 'Neue Montreal';
-  src: url('https://prometheusx.lemoc.uno/Font/NeueMontreal-Regular.woff2') format('woff2');
+  src: url('/resources/Font/NeueMontreal-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -29,7 +29,7 @@
 
 @font-face {
   font-family: 'Cinzel';
-  src: url('https://prometheusx.lemoc.uno/Font/Cinzel-VariableFont_wght.ttf') format('truetype');
+  src: url('/resources/Font/Cinzel-VariableFont_wght.ttf') format('truetype');
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;

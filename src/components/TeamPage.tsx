@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { RotateCw, ChevronUp, ChevronDown } from 'lucide-react';
-import { RESOURCE_ENDPOINT } from '../Constants';
 
 interface TeamMember {
   id: number;
@@ -45,37 +44,37 @@ const TeamPage: React.FC = () => {
       id: 1,
       name: "玉藻前",
       description: "玉藻前玉藻前玉藻前玉藻前玉藻前",
-      imageUrl: `${RESOURCE_ENDPOINT}/Avatar/zao.jpg`
+      imageUrl: "/resources/Avatar/zao.jpg"
     },
     {
       id: 2,
       name: "UU",
       description: "UUUUUUUUUU",
-      imageUrl: `${RESOURCE_ENDPOINT}/Avatar/you.jpg`
+      imageUrl: "/resources/Avatar/you.jpg"
     },
     {
       id: 3,
       name: "Tab",
       description: "TabTabTabTabTab",
-      imageUrl: `${RESOURCE_ENDPOINT}/Avatar/tab.jpg`
+      imageUrl: "/resources/Avatar/tab.jpg"
     },
     {
       id: 4,
       name: "Treap",
       description: "TreapTreapTreapTreapTreap",
-      imageUrl: `${RESOURCE_ENDPOINT}/Avatar/treap.jpg`
+      imageUrl: "/resources/Avatar/treap.jpg"
     },
     {
       id: 5,
       name: "酸黄瓜",
       description: "酸黄瓜酸黄瓜酸黄瓜酸黄瓜酸黄瓜",
-      imageUrl: `${RESOURCE_ENDPOINT}/Avatar/gua.jpg`
+      imageUrl: "/resources/Avatar/gua.jpg"
     },
     {
       id: 6,
       name: "+1",
       description: "+1+1+1+1+1",
-      imageUrl: `${RESOURCE_ENDPOINT}/Avatar/jiayi.jpg`
+      imageUrl: "/resources/Avatar/jiayi.jpg"
     }
   ];
 
