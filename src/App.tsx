@@ -47,7 +47,6 @@ function App() {
     const handleWheel = (e: WheelEvent) => {
       if (isScrollingRef.current || isTransitioning) return;
       if (Math.abs(e.deltaY) < 8) return;
-      console.log(e.deltaY)
       
       e.preventDefault();
 
