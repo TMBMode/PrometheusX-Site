@@ -111,7 +111,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
       
       while (!validPosition && attempts < 200) {
         // 10% chance to create an empty box
-        const isEmpty = Math.random() < 0.1;
+        const isEmpty = Math.random() < 0.003;
         
         let width: number, height: number, actualWidth: number, actualHeight: number, imageIndex: number | null;
         
