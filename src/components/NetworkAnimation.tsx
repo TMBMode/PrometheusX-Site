@@ -62,9 +62,9 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
       img.onerror = () => {
         resolve({
           aspectRatio: 1.0,
-          width: 800,
-          height: 800
-        }); // Fallback
+          width: 400,
+          height: 400
+        }); // Fallback to smaller default
       };
       
       img.src = `/resources/RandomTiles/${index}.jpg`;
@@ -80,11 +80,11 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
       return data;
     } catch (error) {
       console.warn('Error loading image data:', error);
-      // Return fallback data
+      // Return fallback data with smaller dimensions
       return Array.from({ length: 194 }, () => ({
         aspectRatio: 1.0,
-        width: 800,
-        height: 800
+        width: 400,
+        height: 400
       }));
     }
   };
@@ -126,13 +126,12 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
           imageIndex = null;
         } else {
           // Use image data for regular boxes
+          imageIndex = shuffledIndices[i];
+          
           if (imageData.length === 0) {
-            // Fallback if image data not loaded yet
-            width = height = 90 + Math.random() * 40;
-            actualWidth = actualHeight = 800;
-            imageIndex = shuffledIndices[i];
+            // Wait for image data to load - don't create rectangles yet
+            return [];
           } else {
-            imageIndex = shuffledIndices[i];
             const { aspectRatio, width: imgWidth, height: imgHeight } = imageData[imageIndex - 1];
             
             // Calculate consistent sizing based on area
@@ -340,8 +339,10 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
     initializeImageData();
   }, []);
 
-  // Start animation when image data is ready or immediately if no image data needed
+  // Start animation when image data is ready
   useEffect(() => {
+    if (imageData.length === 0) return; // Wait for image data to load
+    
     const timer = setTimeout(() => {
       runAnimationCycle();
     }, 2000); // Initial delay
@@ -353,7 +354,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
       }
       isAnimatingRef.current = false;
     };
-  }, []);
+  }, [imageData]); // Depend on imageData
 
   return (
     <div className="absolute inset-0 pointer-events-none">
