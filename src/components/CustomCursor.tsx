@@ -162,12 +162,10 @@ const CustomCursor: React.FC = () => {
     };
   }, [imageLoaded, hasCursor]);
 
-  // Apply cursor hiding only when custom cursor is visible and not over iframe
+  // Hide default cursor when we have cursor capability and image is loaded
   useEffect(() => {
-    const shouldHideDefaultCursor = hasCursor && isVisible && imageLoaded && !isOverIframe;
-    
-    if (shouldHideDefaultCursor) {
-      // Hide default cursor on all elements
+    if (hasCursor && imageLoaded) {
+      // Always hide default cursor when custom cursor is available
       const style = document.createElement('style');
       style.id = 'custom-cursor-hide';
       style.textContent = '* { cursor: none !important; }';
@@ -187,14 +185,14 @@ const CustomCursor: React.FC = () => {
         existingStyle.remove();
       }
     };
-  }, [isVisible, imageLoaded, isOverIframe, hasCursor]);
+  }, [hasCursor, imageLoaded]);
 
   // Don't render anything if device doesn't have cursor capability
   if (!hasCursor) {
     return null;
   }
 
-  // Hide custom cursor when over iframe
+  // Hide custom cursor when over iframe, but keep default cursor hidden
   const shouldShowCursor = isVisible && imageLoaded && !isOverIframe;
 
   return (
