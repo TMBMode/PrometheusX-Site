@@ -405,7 +405,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
 
           {/* Rectangle */}
           <div
-            className={`absolute border-2 border-white transition-all duration-500 transform pointer-events-auto-main hover:invert ${
+            className={`absolute border-2 border-white transition-all duration-500 transform pointer-events-auto-main peer/rect ${
               visibleRects.has(rect.id)
                 ? 'opacity-100 scale-100' 
                 : 'opacity-0 scale-75'
@@ -420,6 +420,17 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               })
+            }}
+          />
+          
+          {/* Invert Filter */}
+          <div
+            className="opacity-0 peer-hover/rect:opacity-100 transition-opacity duration-500 z-[4] bg-white mix-blend-difference"
+            style={{
+              left: rect.x - rect.width/2,
+              top: rect.y - rect.height/2,
+              width: rect.width,
+              height: rect.height
             }}
           />
 
