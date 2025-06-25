@@ -45,7 +45,7 @@ const CustomCursor: React.FC = () => {
         top: mousePosition.y - 16,  // Center the 32px image (16px offset)
         width: '32px',
         height: '32px',
-        backgroundImage: `url(${RESOURCE_ENDPOINT}/RandomTiles/10.jpg)`,
+        backgroundImage: `url(${RESOURCE_ENDPOINT}/Pointer/pointer1.png)`,
         backgroundSize: '32px 32px',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
