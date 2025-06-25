@@ -197,7 +197,7 @@ const CustomCursor: React.FC = () => {
   return (
     <div
       ref={cursorRef}
-      className={`fixed pointer-events-none z-[9999] transition-opacity duration-150 transition-rotate duratio ${
+      className={`fixed pointer-events-none z-[9999] transition-opacity duration-150 ${
         shouldShowCursor ? 'opacity-90' : 'opacity-0'
       }`}
       style={{
@@ -209,7 +209,7 @@ const CustomCursor: React.FC = () => {
         backgroundSize: `${CURSORSIZE}px ${CURSORSIZE}px`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        transform: isClicked ? 'rotate(0deg)' : 'rotate(25deg)',
+        transform: isClicked ? 'rotate(5deg)' : 'rotate(25deg)',
         transformOrigin: 'center',
       }}
     />
