@@ -6,7 +6,8 @@ interface LogoProps {
   height?: number;
 }
 
-const Logo: React.FC<LogoProps> = ({ className = "", width = 369, height = 85 }) => {
+const Logo: React.FC<LogoProps> = ({ className = "", width = 369 }) => {
+  const height = width * 369 / 85
   return (
     <svg 
       width={width} 
