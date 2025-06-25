@@ -246,7 +246,6 @@ const TeamPage: React.FC = () => {
           className="block sm:hidden rounded-lg transition-colors duration-200 p-4" 
           style={{ width: '280px', height: '240px' }}
           onClick={handleRotate}
-          title="Click to rotate team positions"
         >
           <div className="relative" style={{ width: '240px', height: '200px', margin: '0 auto' }}>
             {teamMembers.map((item, originalIndex) => {
