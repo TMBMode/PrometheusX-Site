@@ -135,7 +135,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
             const { aspectRatio, width: imgWidth, height: imgHeight } = imageData[imageIndex - 1];
             
             // Calculate consistent sizing based on area
-            const targetArea = (90 + Math.random() * 40) ** 2;
+            const targetArea = (90 + Math.random() * 50) ** 2;
             width = Math.sqrt(targetArea * aspectRatio);
             height = Math.sqrt(targetArea / aspectRatio);
             actualWidth = imgWidth;
