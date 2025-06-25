@@ -490,7 +490,6 @@ const TeamPage: React.FC = () => {
                 className={`group p-3 rounded-full border-2 border-white/30 hover:border-white/60 text-white transition-all duration-200 transform hover:scale-110 ${
                   isRotating ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/10'
                 }`}
-                title="Rotate team positions clockwise"
               >
                 <RotateCw 
                   className="w-6 h-6 transition-transform duration-300 ease-in-out"
