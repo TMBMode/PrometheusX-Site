@@ -128,7 +128,7 @@ const GlitchAnimation: React.FC = () => {
             {glitchedText}
           </div>
           <div 
-            className="absolute top-0 left-0 font-mono text-xs text-cyan-500 opacity-60"
+            className="absolute top-0 left-0 font-mono text-sm text-cyan-500 opacity-60"
             style={{
               transform: `translateX(${-glitchIntensity * 2}px)`,
               mixBlendMode: 'screen',
