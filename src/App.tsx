@@ -43,12 +43,10 @@ function App() {
   useEffect(() => {
     if (showIntro) return;
 
-    // Mouse wheel handler - only for large scroll movements
+    // Mouse wheel handler
     const handleWheel = (e: WheelEvent) => {
       if (isScrollingRef.current || isTransitioning) return;
-      
-      // Only trigger section navigation for large scroll movements
-      if (Math.abs(e.deltaY) < 50) return;
+      if (Math.abs(e.deltaY) <= 6) return;
       
       e.preventDefault();
 
@@ -85,7 +83,17 @@ function App() {
       touchEndRef.current = null;
     };
 
-    // Touch end handler - only for deliberate swipes
+    // Touch move handler - prevent default scrolling during our custom handling
+    const handleTouchMove = (e: TouchEvent) => {
+      if (isScrollingRef.current || isTransitioning) return;
+      
+      // Only prevent default if we have a valid touch start
+      if (touchStartRef.current) {
+        e.preventDefault();
+      }
+    };
+
+    // Touch end handler
     const handleTouchEnd = (e: TouchEvent) => {
       if (isScrollingRef.current || isTransitioning || !touchStartRef.current) return;
       
@@ -103,10 +111,10 @@ function App() {
       const deltaTime = touchEnd.time - touchStart.time;
       const velocity = Math.abs(deltaY) / deltaTime;
       
-      // More restrictive swipe detection - only for deliberate fast swipes
-      const minSwipeDistance = 80;
-      const maxSwipeTime = 800;
-      const minVelocity = 0.15; // pixels per millisecond
+      // Minimum swipe distance and maximum time for a valid swipe
+      const minSwipeDistance = 30;
+      const maxSwipeTime = 1000;
+      const minVelocity = 0.06; // pixels per millisecond
       
       if (Math.abs(deltaY) >= minSwipeDistance && 
           deltaTime <= maxSwipeTime && 
@@ -124,16 +132,18 @@ function App() {
       touchEndRef.current = null;
     };
 
-    // Add event listeners - removed touchmove to allow normal scrolling
+    // Add event listeners
     window.addEventListener('wheel', handleWheel, { passive: false });
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false });
     window.addEventListener('touchend', handleTouchEnd, { passive: true });
     
     return () => {
       window.removeEventListener('wheel', handleWheel);
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
     };
   }, [currentSection, showIntro, sections.length, isTransitioning]);
@@ -177,18 +187,22 @@ function App() {
       >
         <div 
           ref={sectionsRef}
-          className="h-screen overflow-y-auto"
+          className="h-screen overflow-hidden scroll-smooth"
+          style={{ 
+            scrollSnapType: 'y mandatory',
+            overscrollBehavior: 'none'
+          }}
         >
-          <div>
+          <div style={{ scrollSnapAlign: 'start' }}>
             <HomePage />
           </div>
-          <div>
+          <div style={{ scrollSnapAlign: 'start' }}>
             <TeamPage />
           </div>
-          <div>
+          <div style={{ scrollSnapAlign: 'start' }}>
             <VideoPage />
           </div>
-          <div>
+          <div style={{ scrollSnapAlign: 'start' }}>
             <DescriptionPage />
           </div>
         </div>
