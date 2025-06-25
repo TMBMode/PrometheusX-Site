@@ -197,7 +197,7 @@ const CustomCursor: React.FC = () => {
   return (
     <div
       ref={cursorRef}
-      className={`fixed pointer-events-none z-[9999] transition-opacity duration-150 ${
+      className={`fixed pointer-events-none z-[9999] transition-opacity duration-150 transition-rotate duratio ${
         shouldShowCursor ? 'opacity-90' : 'opacity-0'
       }`}
       style={{
