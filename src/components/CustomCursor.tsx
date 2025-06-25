@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { RESOURCE_ENDPOINT } from '../Constants';
 
-const CURSORSIZE = 64
+const CURSORSIZE = 80
 
 const CustomCursor: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
