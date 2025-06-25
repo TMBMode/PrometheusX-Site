@@ -356,9 +356,9 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
   }, []);
 
   return (
-    <div className="absolute inset-0">
+    <div className="absolute inset-0 pointer-events-none">
       {/* SVG for connections */}
-      <svg className="absolute inset-0 w-full h-full z-[2] pointer-events-none">
+      <svg className="absolute inset-0 w-full h-full z-[2]">
         {connections.map((connection, index) => {
           const fromRect = rectangles[connection.from];
           const toRect = rectangles[connection.to];
@@ -386,7 +386,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
 
       {/* Rectangles, dots, and labels */}
       {rectangles.map((rect) => (
-        <div key={rect.id} className="z-[1] hover:scale-105">
+        <div key={rect.id} className="z-[1]">
           {/* Dimensions label (above, left-aligned) - Only for non-empty boxes */}
           {!rect.isEmpty && (
             <div
@@ -404,7 +404,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
 
           {/* Rectangle */}
           <div
-            className={`absolute border-2 border-white transition-all duration-500 transform ${
+            className={`absolute border-2 border-white transition-all duration-500 transform pointer-events-auto hover:scale-105 ${
               visibleRects.has(rect.id)
                 ? 'opacity-100 scale-100' 
                 : 'opacity-0 scale-75'
@@ -441,7 +441,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
           
           {/* Center dot */}
           <div
-            className={`absolute w-2 h-2 bg-white rounded-full transition-all duration-500 transform z-[3] pointer-events-none ${
+            className={`absolute w-2 h-2 bg-white rounded-full transition-all duration-500 transform z-[3] ${
               visibleDots.has(rect.id) ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
             }`}
             style={{
