@@ -9,12 +9,54 @@ const CustomCursor: React.FC = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [isOverIframe, setIsOverIframe] = useState(false);
+  const [hasCursor, setHasCursor] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
   const lastMousePositionRef = useRef({ x: 0, y: 0 });
   const mouseMoveTimeoutRef = useRef<NodeJS.Timeout>();
 
-  // Preload the cursor image
+  // Detect if device has a cursor (mouse/trackpad)
   useEffect(() => {
+    const detectCursorCapability = () => {
+      // Check for pointer capability
+      const hasPointer = window.matchMedia('(pointer: fine)').matches;
+      
+      // Check if device is primarily touch-based
+      const isTouchDevice = 'ontouchstart' in window || 
+                           navigator.maxTouchPoints > 0 || 
+                           window.matchMedia('(hover: none)').matches;
+      
+      // Only show cursor if device has fine pointer control and isn't primarily touch-based
+      const shouldShowCursor = hasPointer && !isTouchDevice;
+      
+      setHasCursor(shouldShowCursor);
+    };
+
+    detectCursorCapability();
+
+    // Listen for changes in pointer capability (e.g., connecting/disconnecting mouse)
+    const pointerQuery = window.matchMedia('(pointer: fine)');
+    const hoverQuery = window.matchMedia('(hover: hover)');
+    
+    const handleMediaChange = () => {
+      detectCursorCapability();
+    };
+
+    pointerQuery.addEventListener('change', handleMediaChange);
+    hoverQuery.addEventListener('change', handleMediaChange);
+
+    return () => {
+      pointerQuery.removeEventListener('change', handleMediaChange);
+      hoverQuery.removeEventListener('change', handleMediaChange);
+    };
+  }, []);
+
+  // Preload the cursor image only if device has cursor capability
+  useEffect(() => {
+    if (!hasCursor) {
+      setImageLoaded(false);
+      return;
+    }
+
     const img = new Image();
     img.onload = () => {
       setImageLoaded(true);
@@ -24,7 +66,7 @@ const CustomCursor: React.FC = () => {
       setImageLoaded(true);
     };
     img.src = `${RESOURCE_ENDPOINT}/Pointer/pointer1.png`;
-  }, []);
+  }, [hasCursor]);
 
   // Check if mouse is over an iframe
   const checkIfOverIframe = (x: number, y: number) => {
@@ -35,6 +77,11 @@ const CustomCursor: React.FC = () => {
   };
 
   useEffect(() => {
+    // Don't add mouse event listeners if device doesn't have cursor capability
+    if (!hasCursor) {
+      return;
+    }
+
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
       lastMousePositionRef.current = { x: e.clientX, y: e.clientY };
@@ -113,11 +160,11 @@ const CustomCursor: React.FC = () => {
         clearTimeout(mouseMoveTimeoutRef.current);
       }
     };
-  }, [imageLoaded]);
+  }, [imageLoaded, hasCursor]);
 
   // Apply cursor hiding only when custom cursor is visible and not over iframe
   useEffect(() => {
-    if (isVisible && imageLoaded && !isOverIframe) {
+    if (hasCursor && isVisible && imageLoaded && !isOverIframe) {
       document.body.style.cursor = 'none';
     } else {
       document.body.style.cursor = '';
@@ -126,7 +173,12 @@ const CustomCursor: React.FC = () => {
     return () => {
       document.body.style.cursor = '';
     };
-  }, [isVisible, imageLoaded, isOverIframe]);
+  }, [isVisible, imageLoaded, isOverIframe, hasCursor]);
+
+  // Don't render anything if device doesn't have cursor capability
+  if (!hasCursor) {
+    return null;
+  }
 
   // Hide custom cursor when over iframe
   const shouldShowCursor = isVisible && imageLoaded && !isOverIframe;
