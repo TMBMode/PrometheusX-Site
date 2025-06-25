@@ -112,7 +112,7 @@ function App() {
       
       // Minimum swipe distance and maximum time for a valid swipe
       const minSwipeDistance = 25;
-      const maxSwipeTime = 2000;
+      const maxSwipeTime = 800;
       const minVelocity = 0.1; // pixels per millisecond
       
       if (Math.abs(deltaY) >= minSwipeDistance && 
