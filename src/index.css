@@ -27,6 +27,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Cinzel';
+  src: url('https://prometheusx.lemoc.uno/Font/Cinzel-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Prevent overscroll rubber band effect */
 html, body {
   overscroll-behavior: none;
