@@ -57,11 +57,11 @@ const HomePage: React.FC = () => {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col">
         {/* Logo */}
-        <div className="absolute top-0 left-2">
+        <div className="absolute top-10 left-10">
           <img 
             src={`${RESOURCE_ENDPOINT}/Logo/logo-prometheusx.svg`}
             alt="PrometheusX Logo" 
-            className="h-36 w-auto hover:brightness-150 transition-all duration-300"
+            className="h-16 w-auto hover:brightness-150 transition-all duration-300"
           />
         </div>
         
