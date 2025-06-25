@@ -127,7 +127,7 @@ while (human.questions(ai)) {
   }, [currentCharIndex, currentCodeIndex, isTyping, pseudoCodes]);
 
   return (
-    <div className="absolute top-8 right-0 w-80 h-64 overflow-hidden pointer-events-auto z-20 transition-all duration-300 transform hover:scale-105">
+    <div className="absolute top-8 right-0 w-80 h-64 overflow-hidden pointer-events-auto-main z-20 transition-all duration-300 transform hover:scale-105">
       <div className="h-full overflow-y-auto">
         <pre className="text-xs font-mono text-white/60 leading-relaxed whitespace-pre-wrap">
           {displayedText}
