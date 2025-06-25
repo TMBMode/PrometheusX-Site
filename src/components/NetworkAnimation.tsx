@@ -386,7 +386,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
 
       {/* Rectangles, dots, and labels */}
       {rectangles.map((rect) => (
-        <div key={rect.id} className="z-[1]">
+        <div key={rect.id} className="z-[1] pointer-events-auto-main hover:scale-105">
           {/* Dimensions label (above, left-aligned) - Only for non-empty boxes */}
           {!rect.isEmpty && (
             <div
