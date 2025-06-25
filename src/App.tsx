@@ -4,6 +4,7 @@ import HomePage from './components/HomePage';
 import VideoPage from './components/VideoPage';
 import TeamPage from './components/TeamPage';
 import DescriptionPage from './components/DescriptionPage';
+import CustomCursor from './components/CustomCursor';
 
 function App() {
   const [currentSection, setCurrentSection] = useState(0);
@@ -161,6 +162,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 relative overflow-hidden">
+      {/* Custom Cursor */}
+      <CustomCursor />
+      
       {/* Intro Page */}
       <div 
         className={`absolute inset-0 transition-all duration-1000 ease-in-out ${

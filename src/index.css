@@ -27,6 +27,11 @@
   font-display: swap;
 }
 
+/* Hide default cursor globally */
+* {
+  cursor: none !important;
+}
+
 /* Prevent overscroll rubber band effect */
 html, body {
   overscroll-behavior: none;
