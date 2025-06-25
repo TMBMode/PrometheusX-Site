@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import Cinzel font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&display=swap');
-
 /* Custom Fonts */
 @font-face {
   font-family: 'Saol Display Light';
