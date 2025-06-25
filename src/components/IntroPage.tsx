@@ -58,7 +58,7 @@ const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
           <img 
             src={`${RESOURCE_ENDPOINT}/Logo/logo-prometheusx.svg`}
             alt="PrometheusX Logo" 
-            className="h-auto w-68 hover:brightness-150 transition-all duration-300"
+            className="h-24 w-auto hover:brightness-150 transition-all duration-300"
           />
         </div>
         
