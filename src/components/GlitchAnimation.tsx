@@ -119,7 +119,7 @@ const GlitchAnimation: React.FC = () => {
       {isGlitching && glitchIntensity > 0.3 && (
         <>
           <div 
-            className="absolute top-0 left-0 font-mono text-sm text-red-500 opacity-60"
+            className="absolute top-0 left-0 font-mono text-base text-red-500 opacity-60"
             style={{
               transform: `translateX(${glitchIntensity * 2}px)`,
               mixBlendMode: 'screen',
@@ -128,7 +128,7 @@ const GlitchAnimation: React.FC = () => {
             {glitchedText}
           </div>
           <div 
-            className="absolute top-0 left-0 font-mono text-sm text-cyan-500 opacity-60"
+            className="absolute top-0 left-0 font-mono text-base text-cyan-500 opacity-60"
             style={{
               transform: `translateX(${-glitchIntensity * 2}px)`,
               mixBlendMode: 'screen',
@@ -142,7 +142,7 @@ const GlitchAnimation: React.FC = () => {
       {/* Extreme glitch overlay for high intensity */}
       {isGlitching && glitchIntensity > 0.6 && (
         <div 
-          className="absolute top-0 left-0 font-mono text-sm text-white opacity-30"
+          className="absolute top-0 left-0 font-mono text-base text-white opacity-30"
           style={{
             transform: `
               translateX(${(Math.random() - 0.5) * glitchIntensity * 8}px)
