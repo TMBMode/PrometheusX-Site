@@ -8,6 +8,7 @@ const CustomCursor: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isOverIframe, setIsOverIframe] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
 
   // Preload the cursor image
@@ -26,6 +27,13 @@ const CustomCursor: React.FC = () => {
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
+      
+      // Check if mouse is over an iframe
+      const elementUnderMouse = document.elementFromPoint(e.clientX, e.clientY);
+      const isOverIframeElement = elementUnderMouse?.tagName.toLowerCase() === 'iframe' ||
+                                  elementUnderMouse?.closest('iframe') !== null;
+      
+      setIsOverIframe(isOverIframeElement);
     };
 
     const handleMouseEnter = () => {
@@ -36,6 +44,7 @@ const CustomCursor: React.FC = () => {
 
     const handleMouseLeave = () => {
       setIsVisible(false);
+      setIsOverIframe(false);
     };
 
     const handleMouseDown = () => {
@@ -46,12 +55,28 @@ const CustomCursor: React.FC = () => {
       setIsClicked(false);
     };
 
+    // Handle iframe focus events to detect when mouse enters iframe
+    const handleIframeFocus = () => {
+      setIsOverIframe(true);
+    };
+
+    const handleIframeBlur = () => {
+      setIsOverIframe(false);
+    };
+
     // Add event listeners
     document.addEventListener('mousemove', updateMousePosition);
     document.addEventListener('mouseenter', handleMouseEnter);
     document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('mousedown', handleMouseDown);
     document.addEventListener('mouseup', handleMouseUp);
+
+    // Add iframe-specific listeners
+    const iframes = document.querySelectorAll('iframe');
+    iframes.forEach(iframe => {
+      iframe.addEventListener('mouseenter', handleIframeFocus);
+      iframe.addEventListener('mouseleave', handleIframeBlur);
+    });
 
     // Show cursor initially if mouse is already over the page and image is loaded
     if (imageLoaded) {
@@ -64,12 +89,18 @@ const CustomCursor: React.FC = () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mousedown', handleMouseDown);
       document.removeEventListener('mouseup', handleMouseUp);
+      
+      // Clean up iframe listeners
+      iframes.forEach(iframe => {
+        iframe.removeEventListener('mouseenter', handleIframeFocus);
+        iframe.removeEventListener('mouseleave', handleIframeBlur);
+      });
     };
   }, [imageLoaded]);
 
-  // Apply cursor hiding only when custom cursor is visible
+  // Apply cursor hiding only when custom cursor is visible and not over iframe
   useEffect(() => {
-    if (isVisible && imageLoaded) {
+    if (isVisible && imageLoaded && !isOverIframe) {
       document.body.style.cursor = 'none';
     } else {
       document.body.style.cursor = '';
@@ -78,13 +109,16 @@ const CustomCursor: React.FC = () => {
     return () => {
       document.body.style.cursor = '';
     };
-  }, [isVisible, imageLoaded]);
+  }, [isVisible, imageLoaded, isOverIframe]);
+
+  // Hide custom cursor when over iframe
+  const shouldShowCursor = isVisible && imageLoaded && !isOverIframe;
 
   return (
     <div
       ref={cursorRef}
       className={`fixed pointer-events-none z-[9999] transition-opacity duration-150 ${
-        isVisible && imageLoaded ? 'opacity-100' : 'opacity-0'
+        shouldShowCursor ? 'opacity-100' : 'opacity-0'
       }`}
       style={{
         left: mousePosition.x - CURSORSIZE/2,
