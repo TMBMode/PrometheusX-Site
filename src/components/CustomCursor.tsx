@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { RESOURCE_ENDPOINT } from '../Constants';
 
+const CURSORSIZE = 32
+
 const CustomCursor: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
@@ -43,7 +45,7 @@ const CustomCursor: React.FC = () => {
       style={{
         left: mousePosition.x - 16, // Center the 32px image (16px offset)
         top: mousePosition.y - 16,  // Center the 32px image (16px offset)
-        width: '32px',
+        width: `${cursorSize}px`,
         height: '32px',
         backgroundImage: `url(${RESOURCE_ENDPOINT}/Pointer/pointer1.png)`,
         backgroundSize: '32px 32px',
