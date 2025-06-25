@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const GlitchAnimation: React.FC = () => {
   const [glitchIntensity, setGlitchIntensity] = useState(0);
-  const [glitchedText, setGlitchedText] = useState('Welcome to PrometheusX');
+  const [glitchedText, setGlitchedText] = useState('- Welcome to PrometheusX -');
   const [isGlitching, setIsGlitching] = useState(false);
   const glitchTimeoutRef = useRef<NodeJS.Timeout>();
   const intervalRef = useRef<NodeJS.Timeout>();
 
-  const originalText = 'Welcome to PrometheusX';
+  const originalText = '- Welcome to PrometheusX -';
   const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?~`';
 
   // Fixed position for the glitch box
