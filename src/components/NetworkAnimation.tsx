@@ -386,7 +386,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
 
       {/* Rectangles, dots, and labels */}
       {rectangles.map((rect) => (
-        <div key={rect.id} className="z-[1] pointer-events-auto-main hover:scale-105">
+        <div key={rect.id} className="z-[1]">
           {/* Dimensions label (above, left-aligned) - Only for non-empty boxes */}
           {!rect.isEmpty && (
             <div
@@ -404,7 +404,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
 
           {/* Rectangle */}
           <div
-            className={`absolute border-2 border-white transition-all duration-500 transform ${
+            className={`absolute border-2 border-white transition-all duration-500 transform pointer-events-auto-main hover:scale-105 ${
               visibleRects.has(rect.id)
                 ? 'opacity-100 scale-100' 
                 : 'opacity-0 scale-75'
