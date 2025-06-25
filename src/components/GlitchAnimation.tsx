@@ -91,7 +91,7 @@ const GlitchAnimation: React.FC = () => {
       }}
     >
       <div 
-        className={`font-mono text-white text-xs transition-all duration-150 ${
+        className={`font-mono text-white text-base transition-all duration-150 ${
           isGlitching ? 'animate-pulse' : ''
         }`}
         style={{
