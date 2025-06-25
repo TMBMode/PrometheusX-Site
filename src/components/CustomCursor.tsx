@@ -43,8 +43,8 @@ const CustomCursor: React.FC = () => {
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
       style={{
-        left: mousePosition.x - 16, // Center the 32px image (16px offset)
-        top: mousePosition.y - 16,  // Center the 32px image (16px offset)
+        left: mousePosition.x - CURSORSIZE/2,
+        top: mousePosition.y - CURSORSIZE/2,
         width: `${CURSORSIZE}px`,
         height: `${CURSORSIZE}px`,
         backgroundImage: `url(${RESOURCE_ENDPOINT}/Pointer/pointer1.png)`,
