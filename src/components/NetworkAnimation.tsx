@@ -110,8 +110,8 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
       let rect: Rectangle;
       
       while (!validPosition && attempts < 200) {
-        // 0.3% chance to create an empty box, equivalent of Genshin gacha
-        const isEmpty = Math.random() < 0.003;
+        // 2% chance to create an empty box
+        const isEmpty = Math.random() < 0.02;
         
         let width: number, height: number, actualWidth: number, actualHeight: number, imageIndex: number | null;
         
