@@ -3,6 +3,7 @@ import { ChevronDown } from 'lucide-react';
 import NetworkAnimation from './NetworkAnimation';
 import TypingAnimation from './TypingAnimation';
 import GlitchAnimation from './GlitchAnimation';
+import Logo from './Logo';
 
 const HomePage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -57,10 +58,10 @@ const HomePage: React.FC = () => {
       <div className="relative z-10 h-full flex flex-col">
         {/* Logo */}
         <div className="absolute top-8 left-8">
-          <img 
-            src="/resources/Logo/logo-prometheusx-v2.svg"
-            alt="PrometheusX Logo" 
-            className="h-16 w-auto hover:brightness-150 transition-all duration-300"
+          <Logo 
+            className="hover:brightness-150 transition-all duration-300"
+            width={200}
+            height={46}
           />
         </div>
         
