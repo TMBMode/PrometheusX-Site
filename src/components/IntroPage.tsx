@@ -54,7 +54,7 @@ const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col">
         {/* Logo */}
-        <div className="absolute top-10 left-10">
+        <div className="absolute top-8 left-8">
           <img 
             src={`${RESOURCE_ENDPOINT}/Logo/logo-prometheusx.svg`}
             alt="PrometheusX Logo" 
