@@ -142,7 +142,7 @@ const GlitchAnimation: React.FC = () => {
       {/* Extreme glitch overlay for high intensity */}
       {isGlitching && glitchIntensity > 0.6 && (
         <div 
-          className="absolute top-0 left-0 font-mono text-xs text-white opacity-30"
+          className="absolute top-0 left-0 font-mono text-sm text-white opacity-30"
           style={{
             transform: `
               translateX(${(Math.random() - 0.5) * glitchIntensity * 8}px)
