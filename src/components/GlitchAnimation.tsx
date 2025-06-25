@@ -119,7 +119,7 @@ const GlitchAnimation: React.FC = () => {
       {isGlitching && glitchIntensity > 0.3 && (
         <>
           <div 
-            className="absolute top-0 left-0 font-mono text-xs text-red-500 opacity-60"
+            className="absolute top-0 left-0 font-mono text-sm text-red-500 opacity-60"
             style={{
               transform: `translateX(${glitchIntensity * 2}px)`,
               mixBlendMode: 'screen',
