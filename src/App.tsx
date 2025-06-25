@@ -4,13 +4,11 @@ import HomePage from './components/HomePage';
 import VideoPage from './components/VideoPage';
 import TeamPage from './components/TeamPage';
 import DescriptionPage from './components/DescriptionPage';
-import { RESOURCE_ENDPOINT } from './Constants';
 
 function App() {
   const [currentSection, setCurrentSection] = useState(0);
   const [showIntro, setShowIntro] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [customCursorLoaded, setCustomCursorLoaded] = useState(false);
   const sectionsRef = useRef<HTMLDivElement>(null);
   const isScrollingRef = useRef(false);
   
@@ -19,25 +17,6 @@ function App() {
   const touchEndRef = useRef<{ y: number; time: number } | null>(null);
 
   const sections = ['home', 'video', 'team', 'description'];
-
-  // Load custom cursor image
-  useEffect(() => {
-    const img = new Image();
-    img.onload = () => {
-      setCustomCursorLoaded(true);
-      // Apply custom cursor class to body
-      document.body.classList.add('custom-cursor-loaded');
-    };
-    img.onerror = () => {
-      console.warn('Failed to load custom cursor image');
-    };
-    img.src = `${RESOURCE_ENDPOINT}/Pointer/pointer1.png`;
-
-    // Cleanup function to remove class if component unmounts
-    return () => {
-      document.body.classList.remove('custom-cursor-loaded');
-    };
-  }, []);
 
   // Navigate to section function
   const navigateToSection = (newSection: number) => {

@@ -54,29 +54,3 @@ html, body {
 .font-cinzel {
   font-family: 'Cinzel', serif;
 }
-
-/* Custom Cursor Styles */
-.custom-cursor-loaded {
-  cursor: url('https://prometheusx.lemoc.uno/Pointer/pointer1.png') 16 16, auto !important;
-}
-
-.custom-cursor-loaded * {
-  cursor: url('https://prometheusx.lemoc.uno/Pointer/pointer1.png') 16 16, auto !important;
-}
-
-/* Override specific cursor types when custom cursor is loaded */
-.custom-cursor-loaded button,
-.custom-cursor-loaded a,
-.custom-cursor-loaded [role="button"],
-.custom-cursor-loaded input,
-.custom-cursor-loaded textarea,
-.custom-cursor-loaded select,
-.custom-cursor-loaded [onclick],
-.custom-cursor-loaded [tabindex]:not([tabindex="-1"]) {
-  cursor: url('https://prometheusx.lemoc.uno/Pointer/pointer1.png') 16 16, pointer !important;
-}
-
-/* Ensure iframe elements also use custom cursor */
-.custom-cursor-loaded iframe {
-  cursor: url('https://prometheusx.lemoc.uno/Pointer/pointer1.png') 16 16, auto !important;
-}
