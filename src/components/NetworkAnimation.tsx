@@ -424,7 +424,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
           >
             {/* Invert Overlay on Hover */}
             <div
-              className="absolute inset-0 z-50 opacity-0 hover:opacity-100 pointer-events-auto-main"
+              className="absolute inset-0 z-50 opacity-0 transition-opacity duration-500 hover:opacity-100 pointer-events-auto-main"
               style={{
                 backgroundColor: 'white',
                 mixBlendMode: 'difference',
