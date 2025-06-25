@@ -6,6 +6,7 @@ const CURSORSIZE = 64
 const CustomCursor: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -21,10 +22,20 @@ const CustomCursor: React.FC = () => {
       setIsVisible(false);
     };
 
+    const handleMouseDown = () => {
+      setIsClicked(true);
+    };
+
+    const handleMouseUp = () => {
+      setIsClicked(false);
+    };
+
     // Add event listeners
     document.addEventListener('mousemove', updateMousePosition);
     document.addEventListener('mouseenter', handleMouseEnter);
     document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('mousedown', handleMouseDown);
+    document.addEventListener('mouseup', handleMouseUp);
 
     // Show cursor initially if mouse is already over the page
     setIsVisible(true);
@@ -33,13 +44,15 @@ const CustomCursor: React.FC = () => {
       document.removeEventListener('mousemove', updateMousePosition);
       document.removeEventListener('mouseenter', handleMouseEnter);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('mousedown', handleMouseDown);
+      document.removeEventListener('mouseup', handleMouseUp);
     };
   }, []);
 
   return (
     <div
       ref={cursorRef}
-      className={`fixed pointer-events-none z-[9999] transition-opacity duration-150 ${
+      className={`fixed pointer-events-none z-[9999] transition-all duration-150 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
       style={{
@@ -51,6 +64,8 @@ const CustomCursor: React.FC = () => {
         backgroundSize: `${CURSORSIZE}px ${CURSORSIZE}px`,
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
+        transform: isClicked ? 'rotate(-10deg)' : 'rotate(0deg)',
+        transformOrigin: 'center',
       }}
     />
   );
