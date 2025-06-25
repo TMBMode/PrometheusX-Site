@@ -164,14 +164,28 @@ const CustomCursor: React.FC = () => {
 
   // Apply cursor hiding only when custom cursor is visible and not over iframe
   useEffect(() => {
-    if (hasCursor && isVisible && imageLoaded && !isOverIframe) {
-      document.body.style.cursor = 'none !important';
+    const shouldHideDefaultCursor = hasCursor && isVisible && imageLoaded && !isOverIframe;
+    
+    if (shouldHideDefaultCursor) {
+      // Hide default cursor on all elements
+      const style = document.createElement('style');
+      style.id = 'custom-cursor-hide';
+      style.textContent = '* { cursor: none !important; }';
+      document.head.appendChild(style);
     } else {
-      document.body.style.cursor = '';
+      // Remove the cursor hiding style
+      const existingStyle = document.getElementById('custom-cursor-hide');
+      if (existingStyle) {
+        existingStyle.remove();
+      }
     }
 
     return () => {
-      document.body.style.cursor = '';
+      // Cleanup on unmount
+      const existingStyle = document.getElementById('custom-cursor-hide');
+      if (existingStyle) {
+        existingStyle.remove();
+      }
     };
   }, [isVisible, imageLoaded, isOverIframe, hasCursor]);
 
