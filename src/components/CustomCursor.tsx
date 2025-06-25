@@ -41,12 +41,12 @@ const CustomCursor: React.FC = () => {
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
       style={{
-        left: mousePosition.x - 16, // Center the 32px image (16px offset)
-        top: mousePosition.y - 16,  // Center the 32px image (16px offset)
-        width: '32px',
-        height: '32px',
+        left: `calc(${mousePosition.x}px - 1dvmin)`, // Center the cursor (half of 2dvmin)
+        top: `calc(${mousePosition.y}px - 1dvmin)`,  // Center the cursor (half of 2dvmin)
+        width: '2dvmin',
+        height: '2dvmin',
         backgroundImage: `url(${RESOURCE_ENDPOINT}/Pointer/pointer1.png)`,
-        backgroundSize: '32px 32px',
+        backgroundSize: '2dvmin 2dvmin',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
       }}
