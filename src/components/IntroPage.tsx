@@ -54,9 +54,9 @@ const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col">
         {/* Logo */}
-        <div className="absolute top-8 left-8 pointer-events-auto">
+        <div className="absolute top-8 left-8 pointer-events-auto hover:brightness-150 transition-all duration-300">
           <Logo 
-            className="hover:brightness-150 transition-all duration-300"
+            className=""
             width={280}
           />
         </div>
