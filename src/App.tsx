@@ -43,13 +43,15 @@ function App() {
   useEffect(() => {
     if (showIntro) return;
 
-    // Mouse wheel handler
+    // Mouse wheel handler - only for significant wheel movements
     const handleWheel = (e: WheelEvent) => {
       if (isScrollingRef.current || isTransitioning) return;
-      if (Math.abs(e.deltaY) <= 6) return;
+      
+      // Only trigger on significant wheel movements (not small trackpad movements)
+      if (Math.abs(e.deltaY) < 15) return;
       
       e.preventDefault();
-
+      
       const direction = e.deltaY > 0 ? 1 : -1;
       const newSection = Math.max(0, Math.min(sections.length - 1, currentSection + direction));
       
@@ -83,17 +85,7 @@ function App() {
       touchEndRef.current = null;
     };
 
-    // Touch move handler - prevent default scrolling during our custom handling
-    const handleTouchMove = (e: TouchEvent) => {
-      if (isScrollingRef.current || isTransitioning) return;
-      
-      // Only prevent default if we have a valid touch start
-      if (touchStartRef.current) {
-        e.preventDefault();
-      }
-    };
-
-    // Touch end handler
+    // Touch end handler - only trigger on deliberate swipes
     const handleTouchEnd = (e: TouchEvent) => {
       if (isScrollingRef.current || isTransitioning || !touchStartRef.current) return;
       
@@ -111,10 +103,10 @@ function App() {
       const deltaTime = touchEnd.time - touchStart.time;
       const velocity = Math.abs(deltaY) / deltaTime;
       
-      // Minimum swipe distance and maximum time for a valid swipe
-      const minSwipeDistance = 30;
-      const maxSwipeTime = 1000;
-      const minVelocity = 0.06; // pixels per millisecond
+      // More restrictive swipe detection - only for deliberate, fast swipes
+      const minSwipeDistance = 50;
+      const maxSwipeTime = 800;
+      const minVelocity = 0.15; // pixels per millisecond
       
       if (Math.abs(deltaY) >= minSwipeDistance && 
           deltaTime <= maxSwipeTime && 
@@ -132,18 +124,16 @@ function App() {
       touchEndRef.current = null;
     };
 
-    // Add event listeners
+    // Add event listeners - removed touchmove to allow natural scrolling
     window.addEventListener('wheel', handleWheel, { passive: false });
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: false });
     window.addEventListener('touchend', handleTouchEnd, { passive: true });
     
     return () => {
       window.removeEventListener('wheel', handleWheel);
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
     };
   }, [currentSection, showIntro, sections.length, isTransitioning]);
@@ -187,22 +177,22 @@ function App() {
       >
         <div 
           ref={sectionsRef}
-          className="h-screen overflow-hidden scroll-smooth"
+          className="h-screen overflow-y-auto scroll-smooth"
           style={{ 
             scrollSnapType: 'y mandatory',
             overscrollBehavior: 'none'
           }}
         >
-          <div style={{ scrollSnapAlign: 'start' }}>
+          <div className="h-screen" style={{ scrollSnapAlign: 'start' }}>
             <HomePage />
           </div>
-          <div style={{ scrollSnapAlign: 'start' }}>
+          <div className="h-screen" style={{ scrollSnapAlign: 'start' }}>
             <TeamPage />
           </div>
-          <div style={{ scrollSnapAlign: 'start' }}>
+          <div className="h-screen" style={{ scrollSnapAlign: 'start' }}>
             <VideoPage />
           </div>
-          <div style={{ scrollSnapAlign: 'start' }}>
+          <div className="h-screen" style={{ scrollSnapAlign: 'start' }}>
             <DescriptionPage />
           </div>
         </div>
