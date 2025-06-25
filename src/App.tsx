@@ -133,7 +133,7 @@ function App() {
     };
 
     // Add event listeners
-    window.addEventListener('wheel', handleWheel, { passive: false });
+    //window.addEventListener('wheel', handleWheel, { passive: false });
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('touchstart', handleTouchStart, { passive: true });
     window.addEventListener('touchmove', handleTouchMove, { passive: false });
