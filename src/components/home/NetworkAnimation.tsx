@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { RESOURCE_ENDPOINT } from '../Constants';
+import { RESOURCE_ENDPOINT } from '../../Constants';
 
 interface Rectangle {
   id: number;
