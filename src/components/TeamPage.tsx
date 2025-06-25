@@ -278,7 +278,7 @@ const TeamPage: React.FC = () => {
 
         {/* Medium screens */}
         <div 
-          className="hidden sm:block lg:hidden cursor-pointer hover:bg-white/5 rounded-lg transition-colors duration-200 p-4" 
+          className="hidden sm:block lg:hidden rounded-lg transition-colors duration-200 p-4" 
           style={{ width: '360px', height: '280px' }}
           onClick={handleRotate}
           title="Click to rotate team positions"
