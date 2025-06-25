@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Gamepad2 } from 'lucide-react';
+import PrometheusXLogo from './PrometheusXLogo';
 
 interface IntroPageProps {
   onEnter: () => void;
@@ -54,10 +55,10 @@ const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
       <div className="relative z-10 h-full flex flex-col">
         {/* Logo */}
         <div className="absolute top-8 left-8">
-          <img 
-            src="/resources/Logo/logo-prometheusx-v2.svg"
-            alt="PrometheusX Logo" 
-            className="h-16 w-auto hover:brightness-150 transition-all duration-300"
+          <PrometheusXLogo 
+            width={200}
+            height={64}
+            className="hover:brightness-150 transition-all duration-300"
           />
         </div>
         
