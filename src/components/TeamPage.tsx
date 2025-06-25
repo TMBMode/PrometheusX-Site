@@ -246,7 +246,6 @@ const TeamPage: React.FC = () => {
           className="block sm:hidden rounded-lg transition-colors duration-200 p-4" 
           style={{ width: '280px', height: '240px' }}
           onClick={handleRotate}
-          title="Click to rotate team positions"
         >
           <div className="relative" style={{ width: '240px', height: '200px', margin: '0 auto' }}>
             {teamMembers.map((item, originalIndex) => {
@@ -281,7 +280,6 @@ const TeamPage: React.FC = () => {
           className="hidden sm:block lg:hidden rounded-lg transition-colors duration-200 p-4" 
           style={{ width: '360px', height: '280px' }}
           onClick={handleRotate}
-          title="Click to rotate team positions"
         >
           <div className="relative" style={{ width: '320px', height: '240px', margin: '0 auto' }}>
             {teamMembers.map((item, originalIndex) => {
@@ -316,7 +314,6 @@ const TeamPage: React.FC = () => {
           className="hidden lg:block rounded-lg transition-colors duration-200 p-4" 
           style={{ width: '460px', height: '340px' }}
           onClick={handleRotate}
-          title="Click to rotate team positions"
         >
           <div className="relative" style={{ width: '420px', height: '300px', margin: '0 auto' }}>
             {teamMembers.map((item, originalIndex) => {
@@ -446,7 +443,6 @@ const TeamPage: React.FC = () => {
                 className={`group p-3 md:p-4 lg:p-5 rounded-full border-2 border-white/30 hover:border-white/60 text-white transition-all duration-200 transform hover:scale-110 ${
                   isRotating ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/10'
                 }`}
-                title="Rotate team positions clockwise"
               >
                 <RotateCw 
                   className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 transition-transform duration-300 ease-in-out"
@@ -490,7 +486,6 @@ const TeamPage: React.FC = () => {
                 className={`group p-3 rounded-full border-2 border-white/30 hover:border-white/60 text-white transition-all duration-200 transform hover:scale-110 ${
                   isRotating ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/10'
                 }`}
-                title="Rotate team positions clockwise"
               >
                 <RotateCw 
                   className="w-6 h-6 transition-transform duration-300 ease-in-out"
