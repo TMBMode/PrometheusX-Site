@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- 定义渐变 -->
+    <defs>
+        <linearGradient id="tealGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#007A87" />
+            <stop offset="100%" stop-color="#66B2B2" />
+        </linearGradient>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+    
+    <!-- 文本 -->
+    <text x="200" y="100" font-family="Cinzel, serif" font-size="48" font-weight="600" text-anchor="middle" fill="url(#tealGradient)" filter="url(#glow)">
+        PrometheusX
+    </text>
+    <text x="200" y="130" font-family="Cinzel, serif" font-size="16" font-style="italic" text-anchor="end" fill="rgba(0, 122, 135, 0.7)">
+        Ignis Divinus Furatur
+    </text>
+</svg>
