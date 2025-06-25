@@ -37,18 +37,18 @@ const CustomCursor: React.FC = () => {
   return (
     <div
       ref={cursorRef}
-      className={`
-        fixed pointer-events-none z-[9999] 
-        w-8 h-8 
-        bg-no-repeat bg-center
-        transition-opacity duration-150 ease-in-out
-        ${isVisible ? 'opacity-100' : 'opacity-0'}
-      `}
+      className={`fixed pointer-events-none z-[9999] transition-opacity duration-150 ${
+        isVisible ? 'opacity-100' : 'opacity-0'
+      }`}
       style={{
         left: mousePosition.x - 16, // Center the 32px image (16px offset)
         top: mousePosition.y - 16,  // Center the 32px image (16px offset)
+        width: '32px',
+        height: '32px',
         backgroundImage: `url(${RESOURCE_ENDPOINT}/Pointer/pointer1.png)`,
         backgroundSize: '32px 32px',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
       }}
     />
   );
