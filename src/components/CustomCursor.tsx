@@ -13,7 +13,6 @@ const CustomCursor: React.FC = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
   const lastMousePositionRef = useRef({ x: 0, y: 0 });
   const mouseMoveTimeoutRef = useRef<NodeJS.Timeout>();
-  const cursorStyleRef = useRef<HTMLStyleElement | null>(null);
 
   // Detect if device has a cursor (mouse/trackpad)
   useEffect(() => {
@@ -75,46 +74,6 @@ const CustomCursor: React.FC = () => {
     const isIframe = element?.tagName === 'IFRAME' || element?.closest('iframe') !== null;
     setIsOverIframe(isIframe);
     return isIframe;
-  };
-
-  // Function to apply cursor hiding styles
-  const applyCursorHiding = () => {
-    // Remove existing style if it exists
-    if (cursorStyleRef.current) {
-      cursorStyleRef.current.remove();
-      cursorStyleRef.current = null;
-    }
-
-    // Create and apply new style
-    const style = document.createElement('style');
-    style.id = 'custom-cursor-hide';
-    style.textContent = `
-      *, *::before, *::after {
-        cursor: none !important;
-      }
-      html, body {
-        cursor: none !important;
-      }
-      a, button, input, textarea, select, [role="button"], [tabindex] {
-        cursor: none !important;
-      }
-    `;
-    document.head.appendChild(style);
-    cursorStyleRef.current = style;
-  };
-
-  // Function to remove cursor hiding styles
-  const removeCursorHiding = () => {
-    if (cursorStyleRef.current) {
-      cursorStyleRef.current.remove();
-      cursorStyleRef.current = null;
-    }
-    
-    // Also remove any existing styles with the same ID (cleanup)
-    const existingStyle = document.getElementById('custom-cursor-hide');
-    if (existingStyle) {
-      existingStyle.remove();
-    }
   };
 
   useEffect(() => {
@@ -203,31 +162,32 @@ const CustomCursor: React.FC = () => {
     };
   }, [imageLoaded, hasCursor]);
 
-  // Apply/remove cursor hiding based on state
+  // Apply cursor hiding only when custom cursor is visible and not over iframe
   useEffect(() => {
     const shouldHideDefaultCursor = hasCursor && isVisible && imageLoaded && !isOverIframe;
     
     if (shouldHideDefaultCursor) {
-      applyCursorHiding();
+      // Hide default cursor on all elements
+      const style = document.createElement('style');
+      style.id = 'custom-cursor-hide';
+      style.textContent = '* { cursor: none !important; }';
+      document.head.appendChild(style);
     } else {
-      removeCursorHiding();
+      // Remove the cursor hiding style
+      const existingStyle = document.getElementById('custom-cursor-hide');
+      if (existingStyle) {
+        existingStyle.remove();
+      }
     }
 
-    // Cleanup on unmount
     return () => {
-      removeCursorHiding();
-    };
-  }, [isVisible, imageLoaded, isOverIframe, hasCursor]);
-
-  // Additional cleanup on component unmount
-  useEffect(() => {
-    return () => {
-      removeCursorHiding();
-      if (mouseMoveTimeoutRef.current) {
-        clearTimeout(mouseMoveTimeoutRef.current);
+      // Cleanup on unmount
+      const existingStyle = document.getElementById('custom-cursor-hide');
+      if (existingStyle) {
+        existingStyle.remove();
       }
     };
-  }, []);
+  }, [isVisible, imageLoaded, isOverIframe, hasCursor]);
 
   // Don't render anything if device doesn't have cursor capability
   if (!hasCursor) {
