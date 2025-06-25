@@ -237,92 +237,113 @@ const TeamPage: React.FC = () => {
     );
   };
 
-  // Render grid with responsive sizing
+  // Render grid with responsive sizing and click handler
   const renderGrid = () => {
     return (
       <>
         {/* Mobile/Small screens */}
-        <div className="block sm:hidden" style={{ width: '240px', height: '200px' }}>
-          {teamMembers.map((item, originalIndex) => {
-            const currentPos = getGridPosition(item.position);
-            const targetPos = getGridPosition(item.targetPosition);
-            
-            const currentX = currentPos.col * 90;
-            const currentY = currentPos.row * 90;
-            const targetX = targetPos.col * 90;
-            const targetY = targetPos.row * 90;
-            
-            return (
-              <div 
-                key={item.member.id}
-                className={`absolute transition-all duration-400 ease-in-out ${
-                  item.isAnimating ? 'z-10' : 'z-0'
-                }`}
-                style={{
-                  left: `${item.isAnimating ? targetX : currentX}px`,
-                  top: `${item.isAnimating ? targetY : currentY}px`,
-                }}
-              >
-                {renderGridItem(item, originalIndex, 'w-16 h-16')}
-              </div>
-            );
-          })}
+        <div 
+          className="block sm:hidden cursor-pointer hover:bg-white/5 rounded-lg transition-colors duration-200 p-4" 
+          style={{ width: '280px', height: '240px' }}
+          onClick={handleRotate}
+          title="Click to rotate team positions"
+        >
+          <div className="relative" style={{ width: '240px', height: '200px', margin: '0 auto' }}>
+            {teamMembers.map((item, originalIndex) => {
+              const currentPos = getGridPosition(item.position);
+              const targetPos = getGridPosition(item.targetPosition);
+              
+              const currentX = currentPos.col * 90;
+              const currentY = currentPos.row * 90;
+              const targetX = targetPos.col * 90;
+              const targetY = targetPos.row * 90;
+              
+              return (
+                <div 
+                  key={item.member.id}
+                  className={`absolute transition-all duration-400 ease-in-out ${
+                    item.isAnimating ? 'z-10' : 'z-0'
+                  }`}
+                  style={{
+                    left: `${item.isAnimating ? targetX : currentX}px`,
+                    top: `${item.isAnimating ? targetY : currentY}px`,
+                  }}
+                >
+                  {renderGridItem(item, originalIndex, 'w-16 h-16')}
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Medium screens */}
-        <div className="hidden sm:block lg:hidden" style={{ width: '320px', height: '240px' }}>
-          {teamMembers.map((item, originalIndex) => {
-            const currentPos = getGridPosition(item.position);
-            const targetPos = getGridPosition(item.targetPosition);
-            
-            const currentX = currentPos.col * 120;
-            const currentY = currentPos.row * 110;
-            const targetX = targetPos.col * 120;
-            const targetY = targetPos.row * 110;
-            
-            return (
-              <div 
-                key={item.member.id}
-                className={`absolute transition-all duration-400 ease-in-out ${
-                  item.isAnimating ? 'z-10' : 'z-0'
-                }`}
-                style={{
-                  left: `${item.isAnimating ? targetX : currentX}px`,
-                  top: `${item.isAnimating ? targetY : currentY}px`,
-                }}
-              >
-                {renderGridItem(item, originalIndex, 'w-20 h-20')}
-              </div>
-            );
-          })}
+        <div 
+          className="hidden sm:block lg:hidden cursor-pointer hover:bg-white/5 rounded-lg transition-colors duration-200 p-4" 
+          style={{ width: '360px', height: '280px' }}
+          onClick={handleRotate}
+          title="Click to rotate team positions"
+        >
+          <div className="relative" style={{ width: '320px', height: '240px', margin: '0 auto' }}>
+            {teamMembers.map((item, originalIndex) => {
+              const currentPos = getGridPosition(item.position);
+              const targetPos = getGridPosition(item.targetPosition);
+              
+              const currentX = currentPos.col * 120;
+              const currentY = currentPos.row * 110;
+              const targetX = targetPos.col * 120;
+              const targetY = targetPos.row * 110;
+              
+              return (
+                <div 
+                  key={item.member.id}
+                  className={`absolute transition-all duration-400 ease-in-out ${
+                    item.isAnimating ? 'z-10' : 'z-0'
+                  }`}
+                  style={{
+                    left: `${item.isAnimating ? targetX : currentX}px`,
+                    top: `${item.isAnimating ? targetY : currentY}px`,
+                  }}
+                >
+                  {renderGridItem(item, originalIndex, 'w-20 h-20')}
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Large screens */}
-        <div className="hidden lg:block" style={{ width: '420px', height: '300px' }}>
-          {teamMembers.map((item, originalIndex) => {
-            const currentPos = getGridPosition(item.position);
-            const targetPos = getGridPosition(item.targetPosition);
-            
-            const currentX = currentPos.col * 160;
-            const currentY = currentPos.row * 140;
-            const targetX = targetPos.col * 160;
-            const targetY = targetPos.row * 140;
-            
-            return (
-              <div 
-                key={item.member.id}
-                className={`absolute transition-all duration-400 ease-in-out ${
-                  item.isAnimating ? 'z-10' : 'z-0'
-                }`}
-                style={{
-                  left: `${item.isAnimating ? targetX : currentX}px`,
-                  top: `${item.isAnimating ? targetY : currentY}px`,
-                }}
-              >
-                {renderGridItem(item, originalIndex, 'w-24 h-24', 'border-3')}
-              </div>
-            );
-          })}
+        <div 
+          className="hidden lg:block cursor-pointer hover:bg-white/5 rounded-lg transition-colors duration-200 p-4" 
+          style={{ width: '460px', height: '340px' }}
+          onClick={handleRotate}
+          title="Click to rotate team positions"
+        >
+          <div className="relative" style={{ width: '420px', height: '300px', margin: '0 auto' }}>
+            {teamMembers.map((item, originalIndex) => {
+              const currentPos = getGridPosition(item.position);
+              const targetPos = getGridPosition(item.targetPosition);
+              
+              const currentX = currentPos.col * 160;
+              const currentY = currentPos.row * 140;
+              const targetX = targetPos.col * 160;
+              const targetY = targetPos.row * 140;
+              
+              return (
+                <div 
+                  key={item.member.id}
+                  className={`absolute transition-all duration-400 ease-in-out ${
+                    item.isAnimating ? 'z-10' : 'z-0'
+                  }`}
+                  style={{
+                    left: `${item.isAnimating ? targetX : currentX}px`,
+                    top: `${item.isAnimating ? targetY : currentY}px`,
+                  }}
+                >
+                  {renderGridItem(item, originalIndex, 'w-24 h-24', 'border-3')}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </>
     );
