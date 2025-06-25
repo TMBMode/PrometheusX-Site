@@ -425,7 +425,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
           
           {/* Invert Filter */}
           <div
-            className="opacity-0 peer-hover/rect:opacity-100 transition-opacity duration-500 z-[4] bg-white mix-blend-difference"
+            className="absolute border-2 border-white opacity-0 peer-hover/rect:opacity-100 transition-opacity duration-500 z-[4] bg-white mix-blend-difference"
             style={{
               left: rect.x - rect.width/2,
               top: rect.y - rect.height/2,
