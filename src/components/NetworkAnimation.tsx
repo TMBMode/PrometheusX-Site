@@ -6,10 +6,11 @@ interface Rectangle {
   y: number;
   width: number;
   height: number;
-  imageIndex: number;
+  imageIndex: number | null; // null for empty boxes
   actualWidth: number;
   actualHeight: number;
   randomDate: string;
+  isEmpty: boolean;
 }
 
 interface Connection {
@@ -90,7 +91,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
 
   // Generate random rectangles with consistent sizing
   const generateRandomRectangles = (): Rectangle[] => {
-    if (!containerRef.current || imageData.length === 0) return [];
+    if (!containerRef.current) return [];
 
     const container = containerRef.current;
     const containerRect = container.getBoundingClientRect();
@@ -109,13 +110,39 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
       let rect: Rectangle;
       
       while (!validPosition && attempts < 200) {
-        const imageIndex = shuffledIndices[i];
-        const { aspectRatio, width: actualWidth, height: actualHeight } = imageData[imageIndex - 1];
+        // 10% chance to create an empty box
+        const isEmpty = Math.random() < 0.1;
         
-        // Calculate consistent sizing based on area instead of just one dimension
-        const targetArea = (90 + Math.random() * 40) ** 2; // Square of base size for area
-        const width = Math.sqrt(targetArea * aspectRatio);
-        const height = Math.sqrt(targetArea / aspectRatio);
+        let width: number, height: number, actualWidth: number, actualHeight: number, imageIndex: number | null;
+        
+        if (isEmpty) {
+          // Generate random dimensions for empty box
+          const minSize = 60;
+          const maxSize = 140;
+          width = minSize + Math.random() * (maxSize - minSize);
+          height = minSize + Math.random() * (maxSize - minSize);
+          actualWidth = Math.round(width);
+          actualHeight = Math.round(height);
+          imageIndex = null;
+        } else {
+          // Use image data for regular boxes
+          if (imageData.length === 0) {
+            // Fallback if image data not loaded yet
+            width = height = 90 + Math.random() * 40;
+            actualWidth = actualHeight = 800;
+            imageIndex = shuffledIndices[i];
+          } else {
+            imageIndex = shuffledIndices[i];
+            const { aspectRatio, width: imgWidth, height: imgHeight } = imageData[imageIndex - 1];
+            
+            // Calculate consistent sizing based on area
+            const targetArea = (90 + Math.random() * 40) ** 2;
+            width = Math.sqrt(targetArea * aspectRatio);
+            height = Math.sqrt(targetArea / aspectRatio);
+            actualWidth = imgWidth;
+            actualHeight = imgHeight;
+          }
+        }
         
         const x = centerX - areaWidth/2 + Math.random() * (areaWidth - width);
         const y = centerY - areaHeight/2 + Math.random() * (areaHeight - height);
@@ -129,7 +156,8 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
           imageIndex,
           actualWidth,
           actualHeight,
-          randomDate: generateRandomDate()
+          randomDate: generateRandomDate(),
+          isEmpty
         };
         
         validPosition = newRectangles.every(existingRect => {
@@ -266,7 +294,7 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
 
   // Main animation cycle
   const runAnimationCycle = async (): Promise<void> => {
-    if (isAnimatingRef.current || imageData.length === 0) return;
+    if (isAnimatingRef.current) return;
     
     isAnimatingRef.current = true;
     clearAll();
@@ -312,22 +340,20 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
     initializeImageData();
   }, []);
 
-  // Start animation when image data is ready
+  // Start animation when image data is ready or immediately if no image data needed
   useEffect(() => {
-    if (imageData.length > 0) {
-      const timer = setTimeout(() => {
-        runAnimationCycle();
-      }, 2000); // Initial delay
+    const timer = setTimeout(() => {
+      runAnimationCycle();
+    }, 2000); // Initial delay
 
-      return () => {
-        clearTimeout(timer);
-        if (animationTimeoutRef.current) {
-          clearTimeout(animationTimeoutRef.current);
-        }
-        isAnimatingRef.current = false;
-      };
-    }
-  }, [imageData]);
+    return () => {
+      clearTimeout(timer);
+      if (animationTimeoutRef.current) {
+        clearTimeout(animationTimeoutRef.current);
+      }
+      isAnimatingRef.current = false;
+    };
+  }, []);
 
   return (
     <div className="absolute inset-0 pointer-events-none">
@@ -361,18 +387,20 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
       {/* Rectangles, dots, and labels */}
       {rectangles.map((rect) => (
         <div key={rect.id} className="z-[1]">
-          {/* Dimensions label (above, left-aligned) */}
-          <div
-            className={`absolute text-[8px] font-mono text-white/30 transition-all duration-500 ${
-              visibleRects.has(rect.id) ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{
-              left: rect.x - rect.width/2,
-              top: rect.y - rect.height/2 - 12,
-            }}
-          >
-            {rect.actualWidth}x{rect.actualHeight}
-          </div>
+          {/* Dimensions label (above, left-aligned) - Only for non-empty boxes */}
+          {!rect.isEmpty && (
+            <div
+              className={`absolute text-[8px] font-mono text-white/30 transition-all duration-500 ${
+                visibleRects.has(rect.id) ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{
+                left: rect.x - rect.width/2,
+                top: rect.y - rect.height/2 - 12,
+              }}
+            >
+              {rect.actualWidth}x{rect.actualHeight}
+            </div>
+          )}
 
           {/* Rectangle */}
           <div
@@ -380,32 +408,36 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
               visibleRects.has(rect.id)
                 ? 'opacity-100 scale-100' 
                 : 'opacity-0 scale-75'
-            }`}
+            } ${rect.isEmpty ? 'bg-transparent' : ''}`}
             style={{
               left: rect.x - rect.width/2,
               top: rect.y - rect.height/2,
               width: rect.width,
               height: rect.height,
-              backgroundImage: `url(/resources/RandomTiles/${rect.imageIndex}.jpg)`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
+              ...(rect.isEmpty ? {} : {
+                backgroundImage: `url(/resources/RandomTiles/${rect.imageIndex}.jpg)`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              })
             }}
           />
 
-          {/* Date label (below, right-aligned) */}
-          <div
-            className={`absolute text-[8px] font-mono text-white/30 transition-all duration-500 ${
-              visibleRects.has(rect.id) ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{
-              left: rect.x - rect.width/2,
-              top: rect.y + rect.height/2,
-              width: rect.width,
-              textAlign: 'right'
-            }}
-          >
-            {rect.randomDate}
-          </div>
+          {/* Date label (below, right-aligned) - Only for non-empty boxes */}
+          {!rect.isEmpty && (
+            <div
+              className={`absolute text-[8px] font-mono text-white/30 transition-all duration-500 ${
+                visibleRects.has(rect.id) ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{
+                left: rect.x - rect.width/2,
+                top: rect.y + rect.height/2,
+                width: rect.width,
+                textAlign: 'right'
+              }}
+            >
+              {rect.randomDate}
+            </div>
+          )}
           
           {/* Center dot */}
           <div
