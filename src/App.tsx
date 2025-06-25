@@ -45,7 +45,6 @@ function App() {
 
     // Mouse wheel handler
     const handleWheel = (e: WheelEvent) => {
-      return;
       if (isScrollingRef.current || isTransitioning) return;
       if (Math.abs(e.deltaY) < 8) return;
       
