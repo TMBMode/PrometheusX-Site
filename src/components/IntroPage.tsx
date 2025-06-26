@@ -80,13 +80,25 @@ const IntroPage: React.FC<IntroPageProps> = ({ onEnter, videoLoaded }) => {
             {/* Tagline */}
             <div>
               <h1 className="text-md lg:text-lg font-neue-montreal text-gray-300 leading-tight uppercase">
-                A movement of minds
+                {'A movement of minds'.split('').map((char, index) => (
+                  <span key={index} className="inline-block hover:rotate-12 transition-transform duration-400">
+                    {char === ' ' ? '\u00A0' : char}
+                  </span>
+                ))}
               </h1>
               <p className="text-4xl md:text-5xl lg:text-6xl text-white font-saol-light-italic mb-2">
-                Flaming divinity
+                {'Flaming divinity'.split('').map((char, index) => (
+                  <span key={index} className="inline-block hover:rotate-12 transition-transform duration-400">
+                    {char === ' ' ? '\u00A0' : char}
+                  </span>
+                ))}
               </p>
               <p className="text-4xl md:text-5xl lg:text-6xl text-white font-neue-montreal">
-                at intelligence's frontier
+                {'at intelligence\'s frontier'.split('').map((char, index) => (
+                  <span key={index} className="inline-block hover:rotate-12 transition-transform duration-400">
+                    {char === ' ' ? '\u00A0' : char}
+                  </span>
+                ))}
               </p>
             </div>
             
