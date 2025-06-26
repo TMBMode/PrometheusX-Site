@@ -4,21 +4,34 @@ import Logo from './Logo';
 
 interface IntroPageProps {
   onEnter: () => void;
+  videoLoaded: boolean;
 }
 
-const IntroPage: React.FC<IntroPageProps> = ({ onEnter }) => {
+const IntroPage: React.FC<IntroPageProps> = ({ onEnter, videoLoaded }) => {
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+          videoLoaded ? 'opacity-0' : 'opacity-100'
+        }`}
         style={{
           backgroundImage: `url(/resources/Background/bg-dark.jpg)`,
         }}
       />
       
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-gray-900/60" />
+      {/* Video Background */}
+      <video
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+          videoLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+        muted
+        loop
+        playsInline
+        autoPlay
+      >
+        <source src="/resources/Background/bg-dark-animated.mp4" type="video/mp4" />
+      </video>
       
       {/* RGB Border Animation Styles */}
       <style>{`

@@ -27,16 +27,13 @@ const HomePage: React.FC = () => {
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Background Image */}
+      {/* Home Page Specific Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(/resources/Background/bg-brain.jpg)`,
+          backgroundImage: `url(/resources/Background/bg-overlay-home.png)`,
         }}
       />
-      
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-gray-900/70" />
       
       {/* Animated Network Container */}
       <div ref={containerRef} className="absolute inset-0">

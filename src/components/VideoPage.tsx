@@ -2,7 +2,7 @@ import React from 'react';
 
 const VideoPage: React.FC = () => {
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-black to-gray-900">
+    <section className="relative h-screen w-full overflow-hidden">
       <div className="relative z-10 h-full flex flex-col items-center justify-center px-8">
         <div className="max-w-6xl w-full space-y-12">
           <div className="text-center space-y-4">

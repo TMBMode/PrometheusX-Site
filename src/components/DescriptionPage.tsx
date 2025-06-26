@@ -25,7 +25,7 @@ const DescriptionPage: React.FC = () => {
   ];
 
   return (
-    <section className="relative min-h-screen w-full bg-gradient-to-br from-black to-gray-900 py-20">
+    <section className="relative min-h-screen w-full py-20">
       <div className="relative z-10 max-w-7xl mx-auto px-8">
         <div className="text-center mb-16">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-cinzel text-white mb-6">

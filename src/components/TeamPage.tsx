@@ -348,7 +348,7 @@ const TeamPage: React.FC = () => {
   };
 
   return (
-    <section className="relative h-screen w-full bg-gradient-to-br from-black to-gray-900 flex flex-col justify-center overflow-hidden">
+    <section className="relative h-screen w-full flex flex-col justify-center overflow-hidden">
       {/* Custom Animations */}
       <style>{`
         @keyframes bounce-up {
