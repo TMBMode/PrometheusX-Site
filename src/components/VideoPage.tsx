@@ -19,8 +19,7 @@ const VideoPage: React.FC = () => {
             <div className="relative w-full" style={{ paddingBottom: '56.25%' /* 16:9 aspect ratio */ }}>
               <iframe 
                 className="absolute top-0 left-0 w-full h-full rounded-2xl shadow-2xl"
-                src="https://www.youtube.com/embed/aqz-KE-bpKQ" 
-                title="Big Buck Bunny 60fps 4K - Official Blender Foundation Short Film" 
+                src="https://www.youtube.com/embed/aqz-KE-bpKQ"
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 referrerPolicy="strict-origin-when-cross-origin" 

@@ -109,9 +109,9 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
       let validPosition = false;
       let rect: Rectangle;
       
-      while (!validPosition && attempts < 200) {
-        // 2% chance to create an empty box
-        const isEmpty = Math.random() < 0.02;
+      while (!validPosition && attempts < 50) {
+        // 5% chance to create an empty box
+        const isEmpty = Math.random() < 0.05;
         
         let width: number, height: number, actualWidth: number, actualHeight: number, imageIndex: number | null;
         
@@ -183,8 +183,12 @@ const NetworkAnimation: React.FC<NetworkAnimationProps> = ({ containerRef }) => 
     const newConnections: Connection[] = [];
     
     rects.forEach((rect, index) => {
-      // weighted random 50% 2; 40% 1; 10% 3
-      const connectionCount = Math.random() < 0.5 ? 2 : (Math.random() < 0.8 ? 1 : 3);
+      // weighted random 50% 2; 45% 1; 5% 3
+      let connectionCount = Math.random() < 0.5 ? 2 : (Math.random() < 0.9 ? 1 : 3);
+      // -1 if empty
+      if (rect.isEmpty) {
+        connectionCount -= 1;
+      }
       const availableTargets = rects
         .map((_, i) => i)
         .filter(i => i !== index);

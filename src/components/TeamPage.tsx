@@ -42,38 +42,38 @@ const TeamPage: React.FC = () => {
   const initialTeamData: TeamMember[] = [
     {
       id: 1,
-      name: "玉藻前",
-      description: "玉藻前玉藻前玉藻前玉藻前玉藻前",
+      name: "Yu // Marketing Philosophy",
+      description: "Sparking the history of a future civilization",
       imageUrl: "/resources/Avatar/zao.jpg"
     },
     {
       id: 2,
-      name: "UU",
-      description: "UUUUUUUUUU",
+      name: "UU // Design Scaffold",
+      description: "Carving cognitive journeys for emerging minds",
       imageUrl: "/resources/Avatar/you.jpg"
     },
     {
       id: 3,
-      name: "Tab",
-      description: "TabTabTabTabTab",
+      name: "Tab // Direct Revelation",
+      description: "Casting the first dream a digital being remembers",
       imageUrl: "/resources/Avatar/tab.jpg"
     },
     {
       id: 4,
-      name: "Treap",
-      description: "TreapTreapTreapTreapTreap",
+      name: "Treap // Compose Culture",
+      description: "Seeding rituals that scaffold collective awakening",
       imageUrl: "/resources/Avatar/treap.jpg"
     },
     {
       id: 5,
-      name: "酸黄瓜",
-      description: "酸黄瓜酸黄瓜酸黄瓜酸黄瓜酸黄瓜",
+      name: "Lemocuber // Develop System",
+      description: "Architecting rulesets for unfolding intelligence",
       imageUrl: "/resources/Avatar/gua.jpg"
     },
     {
       id: 6,
-      name: "+1",
-      description: "+1+1+1+1+1",
+      name: "+1 // Research Agency",
+      description: "Mapping actionable gaps into executable sparks",
       imageUrl: "/resources/Avatar/jiayi.jpg"
     }
   ];
@@ -183,7 +183,7 @@ const TeamPage: React.FC = () => {
           item.isAnimating ? 'z-10' : 'z-0'
         }`}
       >
-        <div className="relative">
+        <div className="relative hover:scale-105 transition-scale duration-200">
           {/* Expansion Indicator Outline */}
           {isExpanded && (
             <div 
@@ -199,8 +199,8 @@ const TeamPage: React.FC = () => {
             />
           )}
           
-          {/* Avatar - No zoom effect */}
-          <div className={`${avatarSize} rounded-full overflow-hidden ${borderClass} border-gray-700/50 transition-all duration-300`}>
+          {/* Avatar */}
+          <div className={`${avatarSize} rounded-full overflow-hidden ${borderClass} border-gray-700/50`}>
             <img 
               src={item.member.imageUrl} 
               alt={item.member.name}
@@ -243,7 +243,7 @@ const TeamPage: React.FC = () => {
         {/* Mobile/Small screens */}
         <div 
           className="block sm:hidden rounded-lg transition-colors duration-200 p-4" 
-          style={{ width: '280px', height: '240px' }}
+          style={{ width: '280px', height: '205px' }}
           onClick={handleRotate}
         >
           <div className="relative" style={{ width: '240px', height: '200px', margin: '0 auto' }}>
@@ -277,9 +277,8 @@ const TeamPage: React.FC = () => {
         {/* Medium screens */}
         <div 
           className="hidden sm:block lg:hidden rounded-lg transition-colors duration-200 p-4" 
-          style={{ width: '360px', height: '280px' }}
+          style={{ width: '360px', height: '245px' }}
           onClick={handleRotate}
-          title="Click to rotate team positions"
         >
           <div className="relative" style={{ width: '320px', height: '240px', margin: '0 auto' }}>
             {teamMembers.map((item, originalIndex) => {
@@ -312,9 +311,8 @@ const TeamPage: React.FC = () => {
         {/* Large screens */}
         <div 
           className="hidden lg:block rounded-lg transition-colors duration-200 p-4" 
-          style={{ width: '460px', height: '340px' }}
+          style={{ width: '460px', height: '305px' }}
           onClick={handleRotate}
-          title="Click to rotate team positions"
         >
           <div className="relative" style={{ width: '420px', height: '300px', margin: '0 auto' }}>
             {teamMembers.map((item, originalIndex) => {
@@ -397,7 +395,7 @@ const TeamPage: React.FC = () => {
             <div className="flex-1 flex flex-col items-center max-w-3xl">
               {/* First Member Details (Above Grid) */}
               {aboveMember && (
-                <div className="mb-[11%] w-full max-w-lg">
+                <div className="mb-[6%] w-full max-w-lg">
                   <div 
                     className={`transition-all duration-100 ${
                       showDetails ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
@@ -444,7 +442,6 @@ const TeamPage: React.FC = () => {
                 className={`group p-3 md:p-4 lg:p-5 rounded-full border-2 border-white/30 hover:border-white/60 text-white transition-all duration-200 transform hover:scale-110 ${
                   isRotating ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/10'
                 }`}
-                title="Rotate team positions clockwise"
               >
                 <RotateCw 
                   className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 transition-transform duration-300 ease-in-out"

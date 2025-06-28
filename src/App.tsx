@@ -74,7 +74,7 @@ function App() {
       >
         {/* Shared Background for Main Site */}
         <div 
-          className={`fixed inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+          className={`fixed inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-200 ${
             videoLoaded ? 'opacity-0' : 'opacity-100'
           }`}
           style={{
@@ -85,7 +85,7 @@ function App() {
         {/* Video Background for Main Site */}
         <video
           ref={videoRef}
-          className={`fixed inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+          className={`fixed inset-0 w-full h-full object-cover transition-opacity duration-200 ${
             videoLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           muted
