@@ -5,11 +5,14 @@ import VideoPage from './components/VideoPage';
 import TeamPage from './components/TeamPage';
 import DescriptionPage from './components/DescriptionPage';
 import CustomCursor from './components/CustomCursor';
+import Navigation from './components/Navigation';
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [currentSection, setCurrentSection] = useState(0);
+  const isNavigatingRef = useRef(false);
   const sectionsRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -25,6 +28,64 @@ function App() {
       }, 1000);
     }, 300);
   };
+
+  // Handle navigation to specific section
+  const handleNavigate = (sectionIndex: number) => {
+    // Prevent multiple rapid clicks
+    if (isNavigatingRef.current) return;
+    
+    isNavigatingRef.current = true;
+    setCurrentSection(sectionIndex);
+    
+    if (sectionsRef.current) {
+      const sections = sectionsRef.current.children;
+      if (sections[sectionIndex]) {
+        sections[sectionIndex].scrollIntoView({ behavior: 'smooth' });
+        
+        // Reset the navigating flag after scroll animation completes
+        setTimeout(() => {
+          isNavigatingRef.current = false;
+        }, 600); // Slightly longer than scroll animation to ensure completion
+      } else {
+        // If scroll fails, reset immediately
+        isNavigatingRef.current = false;
+      }
+    } else {
+      // If no sections ref, reset immediately
+      isNavigatingRef.current = false;
+    }
+  };
+
+  // Handle scroll to track current section
+  useEffect(() => {
+    const handleScroll = () => {
+      // Don't update if we're in the middle of a manual navigation
+      if (isNavigatingRef.current) return;
+      
+      if (sectionsRef.current) {
+        const sections = sectionsRef.current.children;
+        const scrollTop = sectionsRef.current.scrollTop;
+        const windowHeight = window.innerHeight;
+        
+        for (let i = 0; i < sections.length; i++) {
+          const section = sections[i] as HTMLElement;
+          const sectionTop = section.offsetTop;
+          const sectionBottom = sectionTop + section.offsetHeight;
+          
+          if (scrollTop >= sectionTop - windowHeight / 2 && scrollTop < sectionBottom - windowHeight / 2) {
+            setCurrentSection(i);
+            break;
+          }
+        }
+      }
+    };
+
+    const sectionsElement = sectionsRef.current;
+    if (sectionsElement) {
+      sectionsElement.addEventListener('scroll', handleScroll);
+      return () => sectionsElement.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
 
   // Handle video loading
   useEffect(() => {
@@ -95,6 +156,9 @@ function App() {
         >
           <source src="/resources/Background/bg-dark-animated.mp4" type="video/mp4" />
         </video>
+        
+        {/* Navigation */}
+        <Navigation currentSection={currentSection} onNavigate={handleNavigate} />
         
         <div 
           ref={sectionsRef}
