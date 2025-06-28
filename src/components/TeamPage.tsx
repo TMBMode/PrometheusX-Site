@@ -4,6 +4,7 @@ import { RotateCw, ChevronUp, ChevronDown } from 'lucide-react';
 interface TeamMember {
   id: number;
   name: string;
+  role: string;
   description: string;
   imageUrl: string;
 }
@@ -42,37 +43,43 @@ const TeamPage: React.FC = () => {
   const initialTeamData: TeamMember[] = [
     {
       id: 1,
-      name: "Yu // Marketing Philosophy",
+      name: "Yu",
+      role: "Marketing Philosophy",
       description: "Sparking the history of a future civilization",
       imageUrl: "/resources/Avatar/zao.jpg"
     },
     {
       id: 2,
-      name: "UU // Design Scaffold",
+      name: "UU",
+      role: "Design Scaffold",
       description: "Carving cognitive journeys for emerging minds",
       imageUrl: "/resources/Avatar/you.jpg"
     },
     {
       id: 3,
-      name: "Tab // Direct Revelation",
+      name: "Tab",
+      role: "Direct Revelation",
       description: "Casting the first dream a digital being remembers",
       imageUrl: "/resources/Avatar/tab.jpg"
     },
     {
       id: 4,
-      name: "Treap // Compose Culture",
+      name: "Treap",
+      role: "Compose Culture",
       description: "Seeding rituals that scaffold collective awakening",
       imageUrl: "/resources/Avatar/treap.jpg"
     },
     {
       id: 5,
-      name: "Lemocuber // Develop System",
+      name: "Lemocuber",
+      role: "Develop System",
       description: "Architecting rulesets for unfolding intelligence",
       imageUrl: "/resources/Avatar/gua.jpg"
     },
     {
       id: 6,
-      name: "+1 // Research Agency",
+      name: "+1",
+      role: "Research Agency",
       description: "Mapping actionable gaps into executable sparks",
       imageUrl: "/resources/Avatar/jiayi.jpg"
     }
@@ -402,8 +409,11 @@ const TeamPage: React.FC = () => {
                     }`}
                   >
                     <div>
-                      <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-neue-montreal text-white truncate">{aboveMember.name}</h3>
-                      <p className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg font-saol-light leading-relaxed truncate">{aboveMember.description}</p>
+                      <div className="flex items-end gap-6">
+                        <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-neue-montreal text-white truncate">{aboveMember.name}</h3>
+                        <p className="text-white/60 text-xs sm:text-sm md:text-base lg:text-lg font-saol-light truncate">{aboveMember.role}</p>
+                      </div>
+                      <p className="text-white/60 text-xs sm:text-sm md:text-base lg:text-lg font-neue-montreal leading-relaxed truncate">{aboveMember.description}</p>
                     </div>
                   </div>
                 </div>
@@ -423,8 +433,11 @@ const TeamPage: React.FC = () => {
                     }`}
                   >
                     <div className="text-right">
-                      <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-neue-montreal text-white truncate">{belowMember.name}</h3>
-                      <p className="text-gray-300 text-xs sm:text-sm md:text-base lg:text-lg font-saol-light leading-relaxed truncate">{belowMember.description}</p>
+                      <div className="flex items-end justify-end gap-6">
+                        <p className="text-white/60 text-xs sm:text-sm md:text-base lg:text-lg font-saol-light truncate">{belowMember.role}</p>
+                        <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-neue-montreal text-white truncate">{belowMember.name}</h3>
+                      </div>
+                      <p className="text-white/60 text-xs sm:text-sm md:text-base lg:text-lg font-neue-montreal leading-relaxed truncate">{belowMember.description}</p>
                     </div>
                   </div>
                 </div>
@@ -466,8 +479,12 @@ const TeamPage: React.FC = () => {
                     showDetails ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
                   }`}
                 >
-                  <h3 className="text-lg font-neue-montreal text-white">{aboveMember.name}</h3>
-                  <p className="text-gray-300 text-sm font-saol-light leading-relaxed">{aboveMember.description}</p>
+                  <div className="flex items-center justify-center gap-2">
+                    <h3 className="text-lg font-neue-montreal text-white">{aboveMember.name}</h3>
+                    <span className="text-white/60 text-sm font-neue-montreal">—</span>
+                    <p className="text-white/60 text-sm font-saol-light">{aboveMember.role}</p>
+                  </div>
+                  <p className="text-white/60 text-sm font-neue-montreal leading-relaxed">{aboveMember.description}</p>
                 </div>
               </div>
             )}
