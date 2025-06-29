@@ -1,33 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import IntroPage from './components/IntroPage';
 import HomePage from './components/HomePage';
 import VideoPage from './components/VideoPage';
 import TeamPage from './components/TeamPage';
 import DescriptionPage from './components/DescriptionPage';
+import ResearchPage from './components/ResearchPage';
 import CustomCursor from './components/CustomCursor';
 import Navigation from './components/Navigation';
 
-function App() {
-  const [showIntro, setShowIntro] = useState(true);
+// Main site component that handles the scroll-based navigation
+const MainSite: React.FC = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [currentSection, setCurrentSection] = useState(0);
   const isNavigatingRef = useRef(false);
   const sectionsRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  const handleEnterSite = () => {
-    setIsTransitioning(true);
-    
-    // Start the transition after a brief delay
-    setTimeout(() => {
-      setShowIntro(false);
-      // Reset transition state after the transition completes
-      setTimeout(() => {
-        setIsTransitioning(false);
-      }, 1000);
-    }, 300);
-  };
 
   // Handle navigation to specific section
   const handleNavigate = (sectionIndex: number) => {
@@ -110,86 +99,153 @@ function App() {
   }, []);
 
   return (
-    <div className={`min-h-screen bg-gradient-to-br from-black to-gray-900 relative overflow-hidden ${showIntro ? 'intro-active' : ''}`}>
+    <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 relative overflow-hidden">
       {/* Custom Cursor */}
       <CustomCursor />
       
-      {/* Intro Page */}
+      {/* Shared Background for Main Site */}
       <div 
-        className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-          showIntro 
-            ? 'opacity-100 scale-100' 
-            : 'opacity-0 scale-110 pointer-events-none'
+        className={`fixed inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-200 ${
+          videoLoaded ? 'opacity-0' : 'opacity-100'
         }`}
+        style={{
+          backgroundImage: `url(/resources/Background/bg-dark.jpg)`,
+        }}
+      />
+      
+      {/* Video Background for Main Site */}
+      <video
+        ref={videoRef}
+        className={`fixed inset-0 w-full h-full object-cover transition-opacity duration-200 ${
+          videoLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
+        muted
+        loop
+        playsInline
+        preload="metadata"
       >
-        <IntroPage onEnter={handleEnterSite} videoLoaded={videoLoaded} />
-      </div>
-
-      {/* Main Site */}
+        <source src="/resources/Background/bg-dark-animated.mp4" type="video/mp4" />
+      </video>
+      
+      {/* Navigation */}
+      <Navigation currentSection={currentSection} onNavigate={handleNavigate} />
+      
       <div 
-        className={`absolute inset-0 transition-all duration-1000 ease-in-out pointer-events-auto-main ${
-          !showIntro 
-            ? 'opacity-100 scale-100' 
-            : 'opacity-0 scale-90'
-        }`}
+        ref={sectionsRef}
+        className="relative h-screen overflow-y-auto snap-y snap-mandatory"
+        style={{ 
+          scrollBehavior: 'smooth',
+          overscrollBehavior: 'none'
+        }}
       >
-        {/* Shared Background for Main Site */}
-        <div 
-          className={`fixed inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-200 ${
-            videoLoaded ? 'opacity-0' : 'opacity-100'
-          }`}
-          style={{
-            backgroundImage: `url(/resources/Background/bg-dark.jpg)`,
-          }}
-        />
-        
-        {/* Video Background for Main Site */}
-        <video
-          ref={videoRef}
-          className={`fixed inset-0 w-full h-full object-cover transition-opacity duration-200 ${
-            videoLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
-          muted
-          loop
-          playsInline
-          preload="metadata"
-        >
-          <source src="/resources/Background/bg-dark-animated.mp4" type="video/mp4" />
-        </video>
-        
-        {/* Navigation */}
-        <Navigation currentSection={currentSection} onNavigate={handleNavigate} />
-        
-        <div 
-          ref={sectionsRef}
-          className="relative h-screen overflow-y-auto snap-y snap-mandatory"
-          style={{ 
-            scrollBehavior: 'smooth',
-            overscrollBehavior: 'none'
-          }}
-        >
-          <div className="snap-start">
-            <HomePage />
-          </div>
-          <div className="snap-start">
-            <TeamPage />
-          </div>
-          <div className="snap-start">
-            <VideoPage />
-          </div>
-          <div className="snap-start">
-            <DescriptionPage />
-          </div>
+        <div className="snap-start">
+          <HomePage />
+        </div>
+        <div className="snap-start">
+          <TeamPage />
+        </div>
+        <div className="snap-start">
+          <VideoPage />
+        </div>
+        <div className="snap-start">
+          <DescriptionPage />
         </div>
       </div>
-
-      {/* Transition Overlay */}
-      <div 
-        className={`absolute inset-0 bg-gradient-to-br from-black to-gray-900 transition-opacity duration-500 pointer-events-none ${
-          isTransitioning ? 'opacity-20' : 'opacity-0'
-        }`}
-      />
     </div>
+  );
+};
+
+// Research page component with its own background
+const ResearchPageWithBackground: React.FC = () => {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 relative overflow-hidden">
+      {/* Custom Cursor */}
+      <CustomCursor />
+      <ResearchPage />
+    </div>
+  );
+};
+
+function App() {
+  const [showIntro, setShowIntro] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+
+  const handleEnterSite = () => {
+    setIsTransitioning(true);
+    
+    // Start the transition after a brief delay
+    setTimeout(() => {
+      setShowIntro(false);
+      // Reset transition state after the transition completes
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 1000);
+    }, 300);
+  };
+
+  // Handle video loading for intro
+  useEffect(() => {
+    const video = document.querySelector('video') as HTMLVideoElement;
+    if (video) {
+      const handleCanPlay = () => {
+        setVideoLoaded(true);
+        // Ensure video plays when ready
+        video.play().catch(e => console.log('Video autoplay prevented:', e));
+      };
+
+      video.addEventListener('canplay', handleCanPlay);
+      
+      // Start loading the video
+      video.load();
+
+      return () => {
+        video.removeEventListener('canplay', handleCanPlay);
+      };
+    }
+  }, []);
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/research" element={<ResearchPageWithBackground />} />
+        <Route path="/" element={
+          <div className={`min-h-screen bg-gradient-to-br from-black to-gray-900 relative overflow-hidden ${showIntro ? 'intro-active' : ''}`}>
+            {/* Custom Cursor */}
+            <CustomCursor />
+            
+            {/* Intro Page */}
+            <div 
+              className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                showIntro 
+                  ? 'opacity-100 scale-100' 
+                  : 'opacity-0 scale-110 pointer-events-none'
+              }`}
+            >
+              <IntroPage onEnter={handleEnterSite} videoLoaded={videoLoaded} />
+            </div>
+
+            {/* Main Site */}
+            <div 
+              className={`absolute inset-0 transition-all duration-1000 ease-in-out pointer-events-auto-main ${
+                !showIntro 
+                  ? 'opacity-100 scale-100' 
+                  : 'opacity-0 scale-90'
+              }`}
+            >
+              <MainSite />
+            </div>
+
+            {/* Transition Overlay */}
+            <div 
+              className={`absolute inset-0 bg-gradient-to-br from-black to-gray-900 transition-opacity duration-500 pointer-events-none ${
+                isTransitioning ? 'opacity-20' : 'opacity-0'
+              }`}
+            />
+          </div>
+        } />
+      </Routes>
+    </Router>
   );
 }
 
