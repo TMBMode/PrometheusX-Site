@@ -54,9 +54,9 @@ const HomePage: React.FC = () => {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col pointer-events-none">
         {/* Logo */}
-        <div className="absolute top-8 left-8 pointer-events-auto-main">
+        <div className="absolute portrait:top-4 landscape:top-8 portrait:left-4 landscape:left-8 pointer-events-auto-main">
           <Logo 
-            className="hover:brightness-150 transition-all duration-300"
+            className="hover:brightness-150 transition-all duration-300 portrait:max-w-[70vw]"
             width={280}
           />
         </div>

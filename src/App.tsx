@@ -142,13 +142,13 @@ const MainSite: React.FC = () => {
           <HomePage />
         </div>
         <div className="snap-start">
-          <TeamPage />
+          <DescriptionPage />
         </div>
         <div className="snap-start">
           <VideoPage />
         </div>
         <div className="snap-start">
-          <DescriptionPage />
+          <TeamPage />
         </div>
       </div>
     </div>

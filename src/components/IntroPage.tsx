@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Gamepad2 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Logo from './Logo';
 
 interface IntroPageProps {
@@ -36,9 +36,9 @@ const IntroPage: React.FC<IntroPageProps> = ({ onEnter, videoLoaded }) => {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col">
         {/* Logo */}
-        <div className="absolute top-8 left-8 pointer-events-auto">
+        <div className="absolute portrait:top-4 landscape:top-8 portrait:left-4 landscape:left-8 pointer-events-auto">
           <Logo 
-            className="hover:brightness-150 transition-all duration-300"
+            className="hover:brightness-150 transition-all duration-300 portrait:max-w-[70vw]"
             width={280}
           />
         </div>
@@ -61,52 +61,67 @@ const IntroPage: React.FC<IntroPageProps> = ({ onEnter, videoLoaded }) => {
         
         {/* Centered Content */}
         <div className="flex-1 flex flex-col items-center justify-center px-8 text-center">
-          <div className="max-w-4xl space-y-20">
+          <div className="max-w-4xl portrait:space-y-10 landscape:space-y-20">
             {/* Tagline */}
             <div>
               <h1 className="text-md md:text-lg lg:text-xl font-neue-montreal text-gray-300 leading-tight uppercase">
                 {'A movement of minds'.split('').map((char, index) => (
-                  <span key={index} className="inline-block hover:rotate-12 transition-transform duration-400">
+                  <span key={index} className="hidden landscape:inline-block hover:rotate-12 transition-transform duration-400">
                     {char === ' ' ? '\u00A0' : char}
                   </span>
                 ))}
+                <span className="landscape:hidden">A movement of minds</span>
               </h1>
               <p className="text-5xl md:text-6xl lg:text-7xl text-white font-saol-light-italic mb-2">
                 {'Flaming divinity'.split('').map((char, index) => (
-                  <span key={index} className="inline-block hover:rotate-12 transition-transform duration-400">
+                  <span key={index} className="hidden landscape:inline-block hover:rotate-12 transition-transform duration-400">
                     {char === ' ' ? '\u00A0' : char}
                   </span>
                 ))}
+                <span className="landscape:hidden">Flaming divinity</span>
               </p>
               <p className="text-5xl md:text-6xl lg:text-7xl text-white font-neue-montreal">
                 {'at intelligence\'s frontier'.split('').map((char, index) => (
-                  <span key={index} className="inline-block hover:rotate-12 transition-transform duration-400">
+                  <span key={index} className="hidden landscape:inline-block hover:rotate-12 transition-transform duration-400">
                     {char === ' ' ? '\u00A0' : char}
                   </span>
                 ))}
+                <span className="landscape:hidden">at intelligence's frontier</span>
               </p>
             </div>
             
             {/* Buttons Row */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-14">
+            <div className="flex portrait:flex-col landscape:flex-row items-center justify-center gap-x-14 gap-y-8">
               {/* Play the Game Link */}
               <a
                 href="about:blank"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-4 px-10 py-4 border-2 border-white/30 hover:border-white/80 text-white text-xl font-medium transition-all duration-300 transform hover:scale-105 no-underline"
+                className="group inline-flex items-center justify-center gap-3 px-[1em] py-[.8em] border-2 border-white/30 hover:border-white/80 text-white text-base md:text-lg lg:text-xl font-light transition-all duration-300 transform hover:scale-105 no-underline w-[15em]"
               >
-                <Gamepad2 className="w-6 h-6 group-hover:scale-110 group-hover:-rotate-12 group-hover:-translate-x-1 transition-transform duration-300" />
-                <span className="font-saol-light">Join the Experiment</span>
+                <img 
+                  src="/resources/Symbol/discord-white.svg" 
+                  alt="Discord"
+                  className="w-6 h-6 group-hover:-rotate-12 group-hover:-translate-x-1 transition-transform duration-300"
+                />
+                <span className="font-neue-montreal">Join Our Experiment</span>
               </a>
+              
+              {/* Read Our Research Button */}
+              {/* <button
+                className="group inline-flex items-center justify-center gap-3 px-[1em] py-[.8em] border-2 border-white/30 hover:border-white/80 text-white text-base md:text-lg lg:text-xl font-light transition-all duration-300 transform hover:scale-105 font-neue-montreal min-w-[13em] max-w-[15em] flex-1"
+              >
+                Read the Paper
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </button> */}
               
               {/* Enter Button */}
               <button
                 onClick={onEnter}
-                className="group inline-flex items-center gap-3 px-10 py-4 border-2 border-white/30 hover:border-white/80 text-white text-xl font-medium transition-all duration-300 transform hover:scale-105 font-saol-light"
+                className="group inline-flex items-center justify-center gap-3 px-[1em] py-[.8em] border-2 border-white/30 hover:border-white/80 text-white text-base md:text-lg lg:text-xl font-light transition-all duration-300 transform hover:scale-105 font-neue-montreal w-[15em]"
               >
-                View Our Work
-                <ArrowRight className="w-5 h-5s group-hover:translate-x-1 transition-transform duration-300" />
+                Explore Our Project
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </button>
             </div>
           </div>

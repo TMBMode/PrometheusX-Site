@@ -9,9 +9,6 @@ const VideoPage: React.FC = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-cinzel text-white">
               Experience the Vision
             </h2>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 max-w-2xl mx-auto font-saol-light">
-              Dive into the immersive world of PrometheusX through our featured presentation
-            </p>
           </div>
           
           {/* YouTube Video */}
