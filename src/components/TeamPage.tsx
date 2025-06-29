@@ -434,8 +434,8 @@ const TeamPage: React.FC = () => {
                   >
                     <div className="text-right">
                       <div className="flex items-end justify-end gap-6">
-                        <p className="text-white/60 text-xs sm:text-sm md:text-base lg:text-lg font-saol-light truncate">{belowMember.role}</p>
                         <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-neue-montreal text-white truncate">{belowMember.name}</h3>
+                        <p className="text-white/60 text-xs sm:text-sm md:text-base lg:text-lg font-saol-light truncate">{belowMember.role}</p>
                       </div>
                       <p className="text-white/60 text-xs sm:text-sm md:text-base lg:text-lg font-neue-montreal leading-relaxed truncate">{belowMember.description}</p>
                     </div>
