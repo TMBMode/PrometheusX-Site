@@ -104,7 +104,7 @@ const ResearchPage: React.FC = () => {
                       <img 
                         src={src} 
                         alt={alt || 'Research figure'} 
-                        className="max-w-full md:max-w-[75%] h-auto rounded-lg shadow-lg border border-gray-600"
+                        className="max-w-full md:max-w-[80%] h-auto rounded-lg shadow-lg border border-gray-600"
                         {...props}
                       />
                     </div>
