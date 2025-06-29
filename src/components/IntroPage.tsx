@@ -43,6 +43,22 @@ const IntroPage: React.FC<IntroPageProps> = ({ onEnter, videoLoaded }) => {
           />
         </div>
         
+        {/* Badge */}
+        <div className="absolute top-4 right-4 md:top-8 md:right-8 lg:top-12 lg:right-12">
+          <a 
+            href="https://bolt.new/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block"
+          >
+            <img 
+              src="/resources/Badge/bolt.png" 
+              alt="Bolt Badge"
+              className="w-16 h-16 md:w-24 md:h-24 pointer-events-auto hover:scale-110 transition-transform duration-300"
+            />
+          </a>
+        </div>
+        
         {/* Centered Content */}
         <div className="flex-1 flex flex-col items-center justify-center px-8 text-center">
           <div className="max-w-4xl space-y-20">

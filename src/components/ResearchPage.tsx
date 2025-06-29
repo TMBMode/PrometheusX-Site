@@ -16,7 +16,7 @@ const ResearchPage: React.FC = () => {
         <div className="bg-black/60 shadow-2xl lg:rounded-lg w-full h-full lg:max-w-[80vw] lg:h-[90vh] flex flex-col border-2 border-gray-700">
           {/* Scrollable content area */}
           <div className="flex-1 overflow-y-auto px-16 py-12 research-content-selectable">
-            <div className="prose prose-lg prose-invert max-w-none">
+            <div className="prose prose-lg prose-invert max-w-non text-white">
               <ReactMarkdown 
                 components={{
                   h1: ({children}) => (
