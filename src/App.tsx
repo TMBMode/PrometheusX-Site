@@ -6,6 +6,7 @@ import VideoPage from './components/VideoPage';
 import TeamPage from './components/TeamPage';
 import DescriptionPage from './components/DescriptionPage';
 import ResearchPage from './components/ResearchPage';
+import AnimationPage from './components/AnimationPage';
 import CustomCursor from './components/CustomCursor';
 import Navigation from './components/Navigation';
 
@@ -166,6 +167,17 @@ const ResearchPageWithBackground: React.FC = () => {
   );
 };
 
+// Animation page component with its own background
+const AnimationPageWithBackground: React.FC = () => {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 relative overflow-hidden">
+      {/* Custom Cursor */}
+      <CustomCursor />
+      <AnimationPage />
+    </div>
+  );
+};
+
 function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -209,6 +221,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/research" element={<ResearchPageWithBackground />} />
+        <Route path="/animation" element={<AnimationPageWithBackground />} />
         <Route path="/" element={
           <div className={`min-h-screen bg-gradient-to-br from-black to-gray-900 relative overflow-hidden ${showIntro ? 'intro-active' : ''}`}>
             {/* Custom Cursor */}
