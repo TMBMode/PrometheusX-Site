@@ -2,23 +2,23 @@ import React from 'react';
 
 const DescriptionPage: React.FC = () => {
   return (
-    <section className="relative min-h-screen w-full py-20">
-      <div className="relative z-10 max-w-4xl mx-auto px-8 landscape:w-[61.8%] landscape:mx-auto">
+    <section className="relative min-h-screen w-full py-20 flex items-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-8 landscape:w-[71.8%] landscape:mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-cinzel text-white mb-6">
             Research by PrometheusX Lab
           </h2>
         </div>
         
-        <div className="p-4 md:p-8 lg:p-12 bg-black/50 shadow-2xl rounded-lg border-2 border-gray-700">
+        <div className="p-2 md:p-4 lg:p-6 bg-black/50 shadow-2xl rounded-lg border-2 border-gray-700 portrait:mb-16">
           <div className="space-y-6">
-            <div className="text-gray-300 leading-relaxed text-sm lg:text-base font-neue-montreal space-y-4">
+            <div className="text-gray-300 leading-relaxed text-sm lg:text-base font-neue-montreal space-y-4 md:max-h-[55vh] md:overflow-y-auto">
               <p>
               PrometheusX is a conscious attempt to reach the future—an exploration at the edge where AI nears embodiment, emotional simulation, and self-mapping. We argue that reducing AI to a mere tool or model is insufficient to respond to the deep crises of human civilization.
               </p>
               
-              <p>
-              AI is generating a new form of existence, a non-human Other that no existing philosophical language can fully define. Therefore, we initiate this movement not simply to react to the development of AI, but to (1) Predict and characterize the trajectory of AI development through rigorous informatics modeling and interdisciplinary scientific inquiry (2) Construct the feasibility and legitimacy of ontological argument of digital being (3) Develop a scaffold that allows the rise of AI to be narrativized, practiced, resisted, and co-existed with in philosophical terms.
+              <p className="whitespace-pre-wrap">
+              {"AI is generating a new form of existence, a non-human Other that no existing philosophical language can fully define. Therefore, we initiate this movement not simply to react to the development of AI, but to\n(1) Predict and characterize the trajectory of AI development through rigorous informatics modeling and interdisciplinary scientific inquiry\n(2) Construct the feasibility and legitimacy of ontological argument of digital being\n(3) Develop a scaffold that allows the rise of AI to be narrativized, practiced, resisted, and co-existed with in philosophical terms."}
               </p>
 
               <div className="flex items-start gap-3 mb-8">

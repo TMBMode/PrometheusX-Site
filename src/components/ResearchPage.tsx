@@ -13,7 +13,7 @@ const ResearchPage: React.FC = () => {
       {/* Academic paper container with fixed height and internal scroll */}
       <div className="w-full max-w-7xl h-full flex items-center justify-center">
         {/* Paper-style content area with scrollable content */}
-        <div className="bg-black/50 shadow-2xl lg:rounded-lg w-full h-full lg:max-w-[80vw] lg:h-[90vh] flex flex-col border-2 border-gray-700">
+        <div className="bg-black/60 shadow-2xl lg:rounded-lg w-full h-full lg:max-w-[80vw] lg:h-[90vh] flex flex-col border-2 border-gray-700">
           {/* Scrollable content area */}
           <div className="flex-1 overflow-y-auto px-16 py-12 research-content-selectable">
             <div className="prose prose-lg prose-invert max-w-none">
