@@ -38,53 +38,6 @@ const ProjectPage: React.FC = () => {
               With 24 possible endings, PrometheusX maps the spectrum of human-AI futures: from transcendent collaboration to existential conflict, from digital apotheosis to the twilight of biological intelligence. Each path reveals different possibilities for what it means to be conscious in an age of artificial minds.
             </p>
           </div>
-          
-          <div className="mt-14 text-right">
-            <div className="flex portrait:flex-col landscape:flex-row gap-2 md:gap-6 lg:gap-8 justify-end portrait:items-end portrait:mb-16">
-              <a 
-                href="https://game.prometheusx.space/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 px-[1.5em] py-[.7em] border-2 border-white/30 hover:border-white/80 text-white text-sm md:text-base font-light transition-all duration-300 transform hover:scale-105 font-neue-montreal"
-              >
-                <span>Play the Game</span>
-                <svg 
-                  className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-[1px] group-hover:-translate-y-[1px] transition-transform duration-300" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
-                  />
-                </svg>
-              </a>
-              <a 
-                href="/animation" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 px-[1.5em] py-[.7em] border-2 border-white/30 hover:border-white/80 text-white text-sm md:text-base font-light transition-all duration-300 transform hover:scale-105 font-neue-montreal"
-              >
-                <span>View Animation</span>
-                <svg 
-                  className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-[1px] group-hover:-translate-y-[1px] transition-transform duration-300" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
-                  />
-                </svg>
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
