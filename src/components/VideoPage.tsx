@@ -19,7 +19,7 @@ const VideoPage: React.FC = () => {
                 src="https://www.youtube.com/embed/LGoBAdnThBM"
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                title="PrometheusX – Official Concept Trailer | The Future Is Awake
+                title="PrometheusX – Official Concept Trailer | The Future Is Awake"
                 referrerPolicy="strict-origin-when-cross-origin" 
                 allowFullScreen
               />
