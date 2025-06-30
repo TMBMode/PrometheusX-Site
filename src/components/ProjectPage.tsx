@@ -3,6 +3,9 @@ import React from 'react';
 const ProjectPage: React.FC = () => {
   return (
     <section className="relative min-h-screen w-full py-20 flex items-center">
+      {/* Black Overlay */}
+      <div className="absolute inset-0 bg-black/10" />
+      
       <div className="relative z-10 max-w-2xl mx-auto px-8 landscape:w-[71.8%] landscape:mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-cinzel text-white mb-6">
