@@ -126,7 +126,7 @@ const MainSite: React.FC = () => {
       {/* Main Site Container - Slides left when navigation is open */}
       <div 
         className={`relative z-40 transition-all duration-500 ease-in-out overflow-hidden ${
-          isNavigationOpen ? '-translate-x-[30%] scale-[96%] rounded-xl' : 'translate-x-0 scale-100 rounded-none'
+          isNavigationOpen ? '-translate-x-[30%] scale-[95%] rounded-xl' : 'translate-x-0 scale-100 rounded-none'
         }`}
         onClick={() => isNavigationOpen && setIsNavigationOpen(false)}
       >
