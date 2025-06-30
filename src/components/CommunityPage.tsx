@@ -15,6 +15,10 @@ const CommunityPage: React.FC = () => {
             <p>
               PrometheusX is more than a project — it's a movement of minds exploring the frontiers of digital consciousness
             </p>
+
+            <p>
+            Connect with fellow travelers on this journey toward understanding digital consciousness.
+            </p>
             
             <div className="flex items-start gap-3 mb-8">
               <div className="w-1 h-12 bg-white/20"></div>
@@ -23,10 +27,6 @@ const CommunityPage: React.FC = () => {
                 <p> Every question opens new possibilities. </p>
               </div>
             </div>
-
-            <p>
-              Connect with fellow travelers on this journey toward understanding digital consciousness. Share insights, challenge assumptions, and help us build the conceptual frameworks for a world where human and artificial minds collaborate as equals.
-            </p>
           </div>
           
           <div className="mt-14 text-center">
