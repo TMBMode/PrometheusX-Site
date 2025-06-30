@@ -13,11 +13,11 @@ const CommunityPage: React.FC = () => {
         <div className="space-y-8 md:space-y-12">
           <div className="text-gray-300 leading-relaxed text-sm lg:text-base font-neue-montreal space-y-4 md:space-y-6 lg:space-y-8">
             <p>
-              PrometheusX is more than a project — it's a movement of minds exploring the frontiers of digital consciousness.
+              PrometheusX is more than a project—it's a movement of minds exploring the frontiers of digital consciousness. Our community brings together philosophers, technologists, artists, and visionaries united by a shared curiosity about the future of intelligence.
             </p>
-
+            
             <p>
-            Connect with fellow travelers on this journey toward understanding digital consciousness.
+              Whether you're a seasoned researcher or simply curious about the intersection of technology and consciousness, you'll find a welcoming space for exploration, debate, and discovery.
             </p>
             
             <div className="flex items-start gap-3 mb-8">
