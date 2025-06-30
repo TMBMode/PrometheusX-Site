@@ -50,9 +50,9 @@ const Navigation: React.FC<NavigationProps> = ({ currentSection, onNavigate, isO
         <div className="absolute right-0 top-0 w-[30%] h-full">
           <div className="flex flex-col h-full px-8 pt-16">
             <div className="space-y-8">
-              {/* Logo or Title */}
+              {/* Logo or Title with responsive constraint */}
               <div className="mb-16">
-                <h2 className="font-cinzel text-white text-2xl md:text-3xl lg:text-4xl">
+                <h2 className="font-cinzel text-white text-2xl md:text-3xl lg:text-4xl max-w-[80%] truncate">
                   PrometheusX
                 </h2>
               </div>
