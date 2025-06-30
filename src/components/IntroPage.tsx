@@ -8,25 +8,21 @@ interface IntroPageProps {
 }
 
 const IntroPage: React.FC<IntroPageProps> = ({ onEnter, videoLoaded }) => {
-  const [gameServerAvailable, setGameServerAvailable] = useState(0);
+  const [gameServerAvailable, setGameServerAvailable] = useState(false);
 
   useEffect(() => {
     const checkGameServer = async () => {
-      const controller = new AbortController();
-      setTimeout(() => controller.abort(), 1000); // 1-second timeout
-    
       try {
-        await fetch('https://prometheusx.space/', {
+        const response = await fetch('https://game.prometheusx.space/', {
           method: 'HEAD',
-          mode: 'no-cors',
-          signal: controller.signal
+          mode: 'no-cors'
         });
-        setGameServerAvailable(1);
+        setGameServerAvailable(true);
       } catch (error) {
-        setGameServerAvailable(-1);
+        setGameServerAvailable(false);
       }
     };
-    
+
     checkGameServer();
   }, []);
 
@@ -116,20 +112,20 @@ const IntroPage: React.FC<IntroPageProps> = ({ onEnter, videoLoaded }) => {
             <div className="flex portrait:flex-col landscape:flex-row items-center justify-center gap-x-14 gap-y-8">
               {/* Play the Game Link */}
               <a
-                href={(gameServerAvailable == 0) ? "about:blank" : ((gameServerAvailable == 1) ? "https://game.prometheusx.space/" : "https://discord.gg/rvHje6Y5Pr")}
+                href={gameServerAvailable ? "https://game.prometheusx.space/" : "about:blank"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-3 px-[1em] py-[.8em] border-2 border-white/30 hover:border-white/80 text-white text-base md:text-lg lg:text-xl font-light transition-all duration-300 transform hover:scale-105 no-underline w-[15em]"
               >
                 <div className="relative w-6 h-6">
                   <Gamepad2 className={`absolute inset-0 w-6 h-6 group-hover:-rotate-12 group-hover:-translate-x-1 transition-all duration-300 ${
-                    (gameServerAvailable > -1) ? 'opacity-100' : 'opacity-0'
+                    gameServerAvailable ? 'opacity-100' : 'opacity-0'
                   }`} />
                   <img 
                     src="/resources/Symbol/discord-white.svg" 
                     alt="Discord"
                     className={`absolute inset-0 w-6 h-6 group-hover:-rotate-12 group-hover:-translate-x-1 transition-all duration-300 ${
-                      (gameServerAvailable > -1) ? 'opacity-0' : 'opacity-100'
+                      gameServerAvailable ? 'opacity-0' : 'opacity-100'
                     }`}
                   />
                 </div>
