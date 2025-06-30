@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import IntroPage from './components/IntroPage';
 import HomePage from './components/HomePage';
 import VideoPage from './components/VideoPage';
+import ProjectPage from './components/ProjectPage';
 import TeamPage from './components/TeamPage';
 import DescriptionPage from './components/DescriptionPage';
 import ResearchPage from './components/ResearchPage';
@@ -143,10 +144,13 @@ const MainSite: React.FC = () => {
           <HomePage />
         </div>
         <div className="snap-start">
-          <DescriptionPage />
+          <VideoPage />
         </div>
         <div className="snap-start">
-          <VideoPage />
+          <ProjectPage />
+        </div>
+        <div className="snap-start">
+          <DescriptionPage />
         </div>
         <div className="snap-start">
           <TeamPage />

@@ -8,9 +8,10 @@ interface NavigationProps {
 const Navigation: React.FC<NavigationProps> = ({ currentSection, onNavigate }) => {
   const sections = [
     { name: 'Home', index: 0 },
-    { name: 'Research', index: 1 },
-    { name: 'Trailer', index: 2 },
-    { name: 'Team', index: 3 }
+    { name: 'Trailer', index: 1 },
+    { name: 'Project', index: 2 },
+    { name: 'Research', index: 3 },
+    { name: 'Team', index: 4 }
   ];
 
   // Inline styles for animations
@@ -97,4 +98,4 @@ const Navigation: React.FC<NavigationProps> = ({ currentSection, onNavigate }) =
   );
 };
 
-export default Navigation; 
+export default Navigation;
