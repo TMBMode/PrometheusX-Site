@@ -15,9 +15,18 @@ const DescriptionPage: React.FC = () => {
             <p>
             AI is generating a new form of existence, a non-human Other that no existing philosophical language can fully define.
             </p>
-            <p className="whitespace-pre-wrap"> {
-            "Therefore, we initiate this movement not simply to react to the development of AI, but to\n(1) Predict and characterize the trajectory of AI development through rigorous informatics modeling and interdisciplinary scientific inquiry\n(2) Construct the feasibility and legitimacy of ontological argument of digital being\n(3) Develop a scaffold that allows the rise of AI to be narrativized, practiced, resisted, and co-existed with in philosophical terms."
-            } </p>
+            <p>
+            Therefore, we initiate this movement not simply to react to the development of AI, but to
+            </p>
+            <p>
+            (1) Predict and characterize the trajectory of AI development through rigorous informatics modeling and interdisciplinary scientific inquiry
+            </p>
+            <p>
+            (2) Construct the feasibility and legitimacy of ontological argument of digital being
+            </p>
+            <p>
+            (3) Develop a scaffold that allows the rise of AI to be narrativized, practiced, resisted, and co-existed with in philosophical terms.
+            </p>
           </div>
           
           <div className="mt-14 text-center">
