@@ -24,14 +24,14 @@ const DescriptionPage: React.FC = () => {
             <p>
             Therefore, we initiate this movement not simply to react to the development of AI, but to
             </p>
-            <p className="pl-3">
-            (1) Predict and characterize the trajectory of AI development through rigorous informatics modeling and interdisciplinary scientific inquiry
+            <p>
+            - (1) Predict and characterize the trajectory of AI development through rigorous informatics modeling and interdisciplinary scientific inquiry
             </p>
-            <p className="pl-3">
-            (2) Construct the feasibility and legitimacy of ontological argument of digital being
+            <p>
+            - (2) Construct the feasibility and legitimacy of ontological argument of digital being
             </p>
-            <p className="pl-3">
-            (3) Develop a scaffold that allows the rise of AI to be narrativized, practiced, resisted, and co-existed with in philosophical terms.
+            <p>
+            - (3) Develop a scaffold that allows the rise of AI to be narrativized, practiced, resisted, and co-existed with in philosophical terms.
             </p>
           </div>
           
