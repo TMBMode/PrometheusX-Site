@@ -14,6 +14,9 @@ const Navigation: React.FC<NavigationProps> = ({ currentSection, onNavigate }) =
     { name: 'Team', index: 4 }
   ];
 
+  // Check if we're on the community page (section 5) - all items should be unfocused
+  const isOnCommunityPage = currentSection === 5;
+
   // Inline styles for animations
   const navSlideInStyle = {
     animation: 'navSlideIn 0.6s ease-out'
@@ -73,7 +76,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentSection, onNavigate }) =
               <div className="relative px-1 py-1 h-full flex items-center">
                 <span 
                   className={`font-cinzel transition-all duration-500 ease-out ${
-                    currentSection === section.index
+                    !isOnCommunityPage && currentSection === section.index
                       ? 'text-white text-lg tracking-wider'
                       : 'text-white/40 text-base tracking-wide group-hover:text-white/70 group-hover:tracking-wider'
                   }`}
@@ -84,7 +87,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentSection, onNavigate }) =
                 {/* Underline indicator */}
                 <div 
                   className={`absolute bottom-1 left-1 h-0.5 bg-white transition-all duration-500 ease-out ${
-                    currentSection === section.index
+                    !isOnCommunityPage && currentSection === section.index
                       ? `opacity-100 ${section.name.length > 7 ? 'w-28' :(section.name.length > 4 ? 'w-24' : 'w-16')}`
                       : 'opacity-0 w-0 group-hover:opacity-50 group-hover:w-8'
                   }`}

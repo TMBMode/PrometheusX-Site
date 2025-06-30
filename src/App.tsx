@@ -6,6 +6,7 @@ import VideoPage from './components/VideoPage';
 import ProjectPage from './components/ProjectPage';
 import TeamPage from './components/TeamPage';
 import DescriptionPage from './components/DescriptionPage';
+import CommunityPage from './components/CommunityPage';
 import ResearchPage from './components/ResearchPage';
 import AnimationPage from './components/AnimationPage';
 import CustomCursor from './components/CustomCursor';
@@ -154,6 +155,9 @@ const MainSite: React.FC = () => {
         </div>
         <div className="snap-start">
           <TeamPage />
+        </div>
+        <div className="snap-start">
+          <CommunityPage />
         </div>
       </div>
     </div>
