@@ -3,100 +3,105 @@ import React from 'react';
 interface NavigationProps {
   currentSection: number;
   onNavigate: (sectionIndex: number) => void;
+  isOpen: boolean;
+  onToggle: () => void;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ currentSection, onNavigate }) => {
+const Navigation: React.FC<NavigationProps> = ({ currentSection, onNavigate, isOpen, onToggle }) => {
   const sections = [
     { name: 'Home', index: 0 },
     { name: 'Trailer', index: 1 },
     { name: 'Project', index: 2 },
     { name: 'Research', index: 3 },
-    { name: 'Team', index: 4 }
+    { name: 'Team', index: 4 },
+    { name: 'Community', index: 5 }
   ];
 
-  // Check if we're on the community page (section 5) - all items should be unfocused
-  const isOnCommunityPage = currentSection === 5;
-
-  // Inline styles for animations
-  const navSlideInStyle = {
-    animation: 'navSlideIn 0.6s ease-out'
-  };
-
-  const navItemHoverStyle = {
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-  };
-
-  const navGlowStyle = {
-    animation: 'navGlow 2s ease-in-out infinite'
-  };
+  // Calculate underline width based on current section progress
+  const lastSectionIndex = sections.length - 1;
+  const underlineWidth = `${((currentSection / lastSectionIndex) * 100)}%`;
 
   return (
     <>
-      <style>
-        {`
-          @keyframes navGlow {
-            0%, 100% {
-              opacity: 0.3;
-              transform: scale(1);
-            }
-            50% {
-              opacity: 0.6;
-              transform: scale(1.02);
-            }
-          }
-
-          @keyframes navSlideIn {
-            from {
-              opacity: 0;
-              transform: translateX(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateX(0);
-            }
-          }
-        `}
-      </style>
-      
-      <nav className="fixed bottom-6 right-6 portrait:bottom-2 portrait:right-2 origin-bottom-right scale-75 md:scale-[85%] lg:scale-100 z-50 pointer-events-auto-main" style={navSlideInStyle}>
-        <div className="flex flex-col portrait:border portrait:border-white/20 portrait:bg-black/20 portrait:backdrop-blur-md portrait:rounded-lg portrait:p-2">
-          {sections.map((section, index) => (
-            <button
-              key={section.index}
-              onClick={() => onNavigate(section.index)}
-              className="group relative nav-item-hover"
-              style={{
-                ...navItemHoverStyle,
-                animationDelay: `${index * 0.1}s`,
-                width: '120px',
-                height: '30px'
-              }}
-            >
-              {/* Text content */}
-              <div className="relative px-1 py-1 h-full flex items-center">
-                <span 
-                  className={`font-cinzel transition-all duration-500 ease-out ${
-                    !isOnCommunityPage && currentSection === section.index
-                      ? 'text-white text-lg tracking-wider'
-                      : 'text-white/40 text-base tracking-wide group-hover:text-white/70 group-hover:tracking-wider'
-                  }`}
-                >
-                  {section.name}
-                </span>
-                
-                {/* Underline indicator */}
-                <div 
-                  className={`absolute bottom-1 left-1 h-0.5 bg-white transition-all duration-500 ease-out ${
-                    !isOnCommunityPage && currentSection === section.index
-                      ? `opacity-100 ${section.name.length > 7 ? 'w-28' :(section.name.length > 4 ? 'w-24' : 'w-16')}`
-                      : 'opacity-0 w-0 group-hover:opacity-50 group-hover:w-8'
-                  }`}
-                />
-              </div>
-            </button>
-          ))}
+      {/* Navigation Toggle Button */}
+      <button
+        onClick={onToggle}
+        className="fixed bottom-4 right-6 lg:bottom-6 lg:right-10 z-50 group hidden md:block"
+      >
+        <div className="relative">
+          <span className="font-cinzel text-white/60 text-lg md:text-xl lg:text-2xl tracking-wide group-hover:text-white transition-all duration-300">
+            Menu
+          </span>
+          <div 
+            className="h-0.5 bg-white/60 transition-all duration-500 ease-out group-hover:bg-white"
+            style={{ width: underlineWidth }}
+          />
         </div>
-      </nav>
+      </button>
+
+      {/* Full Screen Navigation Layer */}
+      <div className="fixed inset-0 bg-gradient-to-br from-[#000] to-[#111] z-30 hidden md:block">
+        {/* Left side (70%) - can be used for additional content or remain empty */}
+        <div className="absolute left-0 top-0 w-[70%] h-full">
+          {/* Optional: Add content here like a logo, background pattern, etc. */}
+        </div>
+
+        {/* Right side (30%) - Navigation Menu */}
+        <div className="absolute right-0 top-0 w-[30%] h-full">
+          <div className="flex flex-col h-full px-8 pt-16">
+            <div className="space-y-8">
+              {/* Logo or Title */}
+              <div className="mb-16">
+                <h2 className="font-cinzel text-white text-2xl md:text-3xl lg:text-4xl">
+                  PrometheusX
+                </h2>
+              </div>
+
+              {/* Navigation Items */}
+              <div className="space-y-6">
+                {sections.map((section, index) => (
+                  <button
+                    key={section.index}
+                    onClick={() => onNavigate(section.index)}
+                    className="group relative w-full text-left"
+                  >
+                    <div className="flex-1">
+                      <span className={`font-cinzel transition-all duration-300 block ${
+                        currentSection === section.index
+                          ? 'text-white text-base md:text-lg lg:text-xl tracking-wider'
+                          : 'text-white/60 text-base md:text-lg lg:text-xl tracking-wide group-hover:text-white/80 group-hover:tracking-wider'
+                      }`}>
+                        {section.name}
+                      </span>
+                      
+                      {/* Underline indicator */}
+                      <div className={`h-0.5 bg-white transition-all duration-300 ${
+                        currentSection === section.index
+                          ? 'w-[90%] opacity-100'
+                          : 'w-0 opacity-0 group-hover:w-36 group-hover:opacity-50'
+                      }`} />
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Additional menu items can go here */}
+              <div className="pt-8 border-t border-white/10">
+                <a
+                  href="/research"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative w-full text-left block"
+                >
+                  <span className="font-cinzel text-white/60 text-base md:text-lg lg:text-xl tracking-wide group-hover:text-white/80 group-hover:tracking-wider transition-all duration-300">
+                    Research Paper
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

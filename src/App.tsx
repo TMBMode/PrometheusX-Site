@@ -17,6 +17,7 @@ const MainSite: React.FC = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [currentSection, setCurrentSection] = useState(0);
+  const [isNavigationOpen, setIsNavigationOpen] = useState(false);
   const isNavigatingRef = useRef(false);
   const sectionsRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -32,7 +33,10 @@ const MainSite: React.FC = () => {
     if (sectionsRef.current) {
       const sections = sectionsRef.current.children;
       if (sections[sectionIndex]) {
-        sections[sectionIndex].scrollIntoView({ behavior: 'smooth' });
+        sections[sectionIndex].scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'center'
+        });
         
         // Reset the navigating flag after scroll animation completes
         setTimeout(() => {
@@ -46,6 +50,11 @@ const MainSite: React.FC = () => {
       // If no sections ref, reset immediately
       isNavigatingRef.current = false;
     }
+  };
+
+  // Handle navigation toggle
+  const handleNavigationToggle = () => {
+    setIsNavigationOpen(!isNavigationOpen);
   };
 
   // Handle scroll to track current section
@@ -106,58 +115,71 @@ const MainSite: React.FC = () => {
       {/* Custom Cursor */}
       <CustomCursor />
       
-      {/* Shared Background for Main Site */}
-      <div 
-        className={`fixed inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-200 ${
-          videoLoaded ? 'opacity-0' : 'opacity-100'
-        }`}
-        style={{
-          backgroundImage: `url(/resources/Background/bg-dark.jpg)`,
-        }}
+      {/* Navigation */}
+      <Navigation 
+        currentSection={currentSection} 
+        onNavigate={handleNavigate} 
+        isOpen={isNavigationOpen}
+        onToggle={handleNavigationToggle}
       />
       
-      {/* Video Background for Main Site */}
-      <video
-        ref={videoRef}
-        className={`fixed inset-0 w-full h-full object-cover transition-opacity duration-200 ${
-          videoLoaded ? 'opacity-100' : 'opacity-0'
-        }`}
-        muted
-        loop
-        playsInline
-        preload="metadata"
-      >
-        <source src="/resources/Background/bg-dark-animated.mp4" type="video/mp4" />
-      </video>
-      
-      {/* Navigation */}
-      <Navigation currentSection={currentSection} onNavigate={handleNavigate} />
-      
+      {/* Main Site Container - Slides left when navigation is open */}
       <div 
-        ref={sectionsRef}
-        className="relative h-screen overflow-y-auto snap-y snap-mandatory"
-        style={{ 
-          scrollBehavior: 'smooth',
-          overscrollBehavior: 'none'
-        }}
+        className={`relative z-40 transition-all duration-500 ease-in-out overflow-hidden ${
+          isNavigationOpen ? '-translate-x-[30%] scale-[96%] rounded-xl' : 'translate-x-0 scale-100 rounded-none'
+        }`}
+        onClick={() => isNavigationOpen && setIsNavigationOpen(false)}
       >
-        <div className="snap-start">
-          <HomePage />
-        </div>
-        <div className="snap-start">
-          <VideoPage />
-        </div>
-        <div className="snap-start">
-          <ProjectPage />
-        </div>
-        <div className="snap-start">
-          <DescriptionPage />
-        </div>
-        <div className="snap-start">
-          <TeamPage />
-        </div>
-        <div className="snap-start">
-          <CommunityPage />
+        {/* Shared Background for Main Site */}
+        <div 
+          className={`fixed inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-200 ${
+            videoLoaded ? 'opacity-0' : 'opacity-100'
+          } ${isNavigationOpen ? 'rounded-xl' : 'rounded-none'}`}
+          style={{
+            backgroundImage: `url(/resources/Background/bg-dark.jpg)`,
+          }}
+        />
+        
+        {/* Video Background for Main Site */}
+        <video
+          ref={videoRef}
+          className={`fixed inset-0 w-full h-full object-cover transition-opacity duration-200 ${
+            videoLoaded ? 'opacity-100' : 'opacity-0'
+          } ${isNavigationOpen ? 'rounded-xl' : 'rounded-none'}`}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        >
+          <source src="/resources/Background/bg-dark-animated.mp4" type="video/mp4" />
+        </video>
+        
+        <div 
+          ref={sectionsRef}
+          className="relative h-screen overflow-y-auto snap-y snap-mandatory"
+          style={{ 
+            scrollBehavior: 'smooth',
+            overscrollBehavior: 'none'
+          }}
+        >
+          <div className="snap-start">
+            <HomePage />
+          </div>
+          <div className="snap-start">
+            <VideoPage />
+          </div>
+          <div className="snap-start">
+            <ProjectPage />
+          </div>
+          <div className="snap-start">
+            <DescriptionPage />
+          </div>
+          <div className="snap-start">
+            <TeamPage />
+          </div>
+          <div className="snap-start">
+            <CommunityPage />
+          </div>
         </div>
       </div>
     </div>
