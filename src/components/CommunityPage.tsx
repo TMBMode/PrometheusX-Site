@@ -38,7 +38,7 @@ const CommunityPage: React.FC = () => {
           <div className="mt-14 text-center">
             <div className="flex justify-center portrait:mb-16">
               <a 
-                href="https://discord.gg/prometheusx" 
+                href="https://discord.gg/rvHje6Y5Pr" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 px-[1.5em] py-[.7em] border-2 border-white/30 hover:border-white/80 text-white text-sm md:text-base font-light transition-all duration-300 transform hover:scale-105 font-neue-montreal"
