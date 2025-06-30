@@ -11,7 +11,7 @@ const DescriptionPage: React.FC = () => {
         </div>
         
         <div className="space-y-8 md:space-y-12">
-          <div className="text-gray-300 leading-relaxed text-sm lg:text-base font-neue-montreal space-y-2 md:space-y-4">
+          <div className="text-gray-300 leading-relaxed text-sm lg:text-base font-neue-montreal space-y-2 md:space-y-3 lg:space-y-4">
             <p>
             AI is generating a new form of existence, a non-human Other that no existing philosophical language can fully define.
             </p>
