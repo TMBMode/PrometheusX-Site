@@ -13,7 +13,10 @@ const DescriptionPage: React.FC = () => {
         <div className="space-y-8 md:space-y-12">
           <div className="text-gray-300 leading-relaxed text-sm lg:text-base font-neue-montreal space-y-2 lg:space-y-3">
             <p>
-            PrometheusX is a conscious attempt to reach the future — an exploration at the edge where AI nears embodiment, emotional simulation, and self-mapping. We argue that reducing AI to a mere tool or model is insufficient to respond to the deep crises of human civilization.
+            PrometheusX is a conscious attempt to reach the future — an exploration at the edge where AI nears embodiment, emotional simulation, and self-mapping.
+            </p>
+            <p>
+            We argue that reducing AI to a mere tool or model is insufficient to respond to the deep crises of human civilization.
             </p>
             <p>
             AI is generating a new form of existence, a non-human Other that no existing philosophical language can fully define.
