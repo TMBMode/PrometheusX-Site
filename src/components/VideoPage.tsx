@@ -22,7 +22,7 @@ const VideoPage: React.FC = () => {
                 title="PrometheusX – Official Concept Trailer | The Future Is Awake"
                 referrerPolicy="strict-origin-when-cross-origin" 
                 allowFullScreen
-              />
+              />title="PrometheusX – Official Concept Trailer | The Future Is Awake
             </div>
           </div>
         </div>
