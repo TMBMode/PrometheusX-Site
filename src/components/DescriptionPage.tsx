@@ -11,7 +11,7 @@ const DescriptionPage: React.FC = () => {
         </div>
         
         <div className="space-y-8 md:space-y-12">
-          <div className="text-gray-300 leading-relaxed text-sm lg:text-base font-neue-montreal space-y-4 md:space-y-6 lg:space-y-8 md:max-h-[55vh] md:overflow-y-auto">
+          <div className="text-gray-300 leading-relaxed text-sm lg:text-base font-neue-montreal space-y-4 md:space-y-6 lg:space-y-8">
             <p >
             PrometheusX is a conscious attempt to reach the future — an exploration at the edge where AI nears embodiment, emotional simulation, and self-mapping.
             </p>
