@@ -112,7 +112,7 @@ const IntroPage: React.FC<IntroPageProps> = ({ onEnter, videoLoaded }) => {
             <div className="flex portrait:flex-col landscape:flex-row items-center justify-center gap-x-14 gap-y-8">
               {/* Play the Game Link */}
               <a
-                href={gameServerAvailable ? "https://game.prometheusx.space/" : "about:blank"}
+                href={gameServerAvailable ? "https://game.prometheusx.space/" : "https://discord.gg/rvHje6Y5Pr"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center justify-center gap-3 px-[1em] py-[.8em] border-2 border-white/30 hover:border-white/80 text-white text-base md:text-lg lg:text-xl font-light transition-all duration-300 transform hover:scale-105 no-underline w-[15em]"
