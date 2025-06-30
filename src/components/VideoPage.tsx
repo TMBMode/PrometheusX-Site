@@ -14,7 +14,15 @@ const VideoPage: React.FC = () => {
           {/* YouTube Video */}
           <div className="relative w-full max-w-4xl mx-auto">
             <div className="relative w-full" style={{ paddingBottom: '56.25%' /* 16:9 aspect ratio */ }}>
-              <iframe width="996" height="560" src="https://www.youtube.com/embed/LGoBAdnThBM" title="PrometheusX – Official Concept Trailer | The Future Is Awake" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <iframe 
+                className="absolute top-0 left-0 w-full h-full rounded-2xl shadow-2xl"
+                src="https://www.youtube.com/embed/LGoBAdnThBM"
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                title="PrometheusX – Official Concept Trailer | The Future Is Awake
+                referrerPolicy="strict-origin-when-cross-origin" 
+                allowFullScreen
+              />
             </div>
           </div>
         </div>
