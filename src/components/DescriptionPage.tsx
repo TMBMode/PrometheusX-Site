@@ -16,10 +16,7 @@ const DescriptionPage: React.FC = () => {
             PrometheusX is a conscious attempt to reach the future — an exploration at the edge where AI nears embodiment, emotional simulation, and self-mapping.
             </p>
             <p>
-            We argue that reducing AI to a mere tool or model is insufficient to respond to the deep crises of human civilization.
-            </p>
-            <p>
-            AI is generating a new form of existence, a non-human Other that no existing philosophical language can fully define.
+            We argue that reducing AI to a mere tool or model is insufficient to respond to the deep crises of human civilization. AI is generating a new form of existence, a non-human Other that no existing philosophical language can fully define.
             </p>
             <p>
             Therefore, we initiate this movement not simply to react to the development of AI, but to
