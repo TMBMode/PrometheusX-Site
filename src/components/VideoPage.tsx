@@ -21,8 +21,8 @@ const VideoPage: React.FC = () => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 title="PrometheusX – Official Concept Trailer | The Future Is Awake"
                 referrerPolicy="strict-origin-when-cross-origin" 
-                allowFullScreen
-              />title="PrometheusX – Official Concept Trailer | The Future Is Awake
+                allowfullscreen
+              />
             </div>
           </div>
         </div>
