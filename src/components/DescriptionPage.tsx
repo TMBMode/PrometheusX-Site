@@ -32,8 +32,8 @@ const DescriptionPage: React.FC = () => {
             </div>
           </div>
           
-          <div className="mt-14 text-right">
-            <div className="flex portrait:flex-col landscape:flex-row gap-2 md:gap-6 lg:gap-8 justify-end portrait:items-end portrait:mb-16">
+          <div className="mt-14 text-center">
+            <div className="flex portrait:flex-col landscape:flex-row gap-2 md:gap-6 lg:gap-8 justify-center portrait:items-center portrait:mb-16">
               <a 
                 href="/research" 
                 target="_blank" 
