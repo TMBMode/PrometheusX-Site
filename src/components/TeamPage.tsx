@@ -354,9 +354,6 @@ const TeamPage: React.FC = () => {
 
   return (
     <section className="relative h-screen w-full flex flex-col justify-center overflow-hidden">
-      {/* Black Overlay */}
-      <div className="absolute inset-0 bg-black/10" />
-      
       {/* Custom Animations */}
       <style>{`
         @keyframes bounce-up {
