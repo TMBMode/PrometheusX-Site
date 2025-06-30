@@ -12,17 +12,21 @@ const IntroPage: React.FC<IntroPageProps> = ({ onEnter, videoLoaded }) => {
 
   useEffect(() => {
     const checkGameServer = async () => {
+      const controller = new AbortController();
+      setTimeout(() => controller.abort(), 2000); // 2-second timeout
+    
       try {
-        const response = await fetch('https://game.prometheusx.space/', {
+        await fetch('https://game.prometheusx.space/', {
           method: 'HEAD',
-          mode: 'no-cors'
+          mode: 'no-cors',
+          signal: controller.signal
         });
         setGameServerAvailable(1);
       } catch (error) {
         setGameServerAvailable(-1);
       }
     };
-
+    
     checkGameServer();
   }, []);
 
