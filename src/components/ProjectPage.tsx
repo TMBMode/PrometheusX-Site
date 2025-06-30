@@ -10,7 +10,7 @@ const ProjectPage: React.FC = () => {
           </h2>
         </div>
         
-        <div className="space-y-8 md:space-y-12 portrait:mb-16">
+        <div className="space-y-8 md:space-y-12 mb-8 portrait:mb-16">
           <div className="text-gray-300 leading-relaxed text-sm lg:text-base font-neue-montreal space-y-4 md:space-y-6 lg:space-y-8">
             <p>
               PrometheusX emerges as an experimental gaming platform where philosophy meets interactive experience. Through immersive gameplay, we explore the boundaries between human and artificial consciousness.
