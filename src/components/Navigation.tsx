@@ -55,7 +55,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentSection, onNavigate }) =
         `}
       </style>
       
-      <nav className="fixed bottom-6 right-6 portrait:bottom-0 portrait:right-0 portrait:scale-75 z-50 pointer-events-auto-main" style={navSlideInStyle}>
+      <nav className="fixed bottom-6 right-6 portrait:bottom-0 portrait:right-0 scale-75 md:scale-85 lg-scale-100 z-50 pointer-events-auto-main" style={navSlideInStyle}>
         <div className="flex flex-col portrait:border portrait:border-white/20 portrait:bg-black/20 portrait:backdrop-blur-md portrait:rounded-lg portrait:p-2">
           {sections.map((section, index) => (
             <button
