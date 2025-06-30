@@ -4,7 +4,7 @@ const VideoPage: React.FC = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Black Overlay */}
-      <div className="absolute inset-0 bg-black/10" />
+      <div className="absolute inset-0 bg-black/20" />
       
       <div className="relative z-10 h-full flex flex-col items-center justify-center px-8">
         <div className="max-w-6xl w-full landscape:w-[61.8%] space-y-12">
