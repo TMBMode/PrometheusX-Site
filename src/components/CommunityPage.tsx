@@ -13,7 +13,7 @@ const CommunityPage: React.FC = () => {
         <div className="space-y-8 md:space-y-12">
           <div className="text-gray-300 leading-relaxed text-sm lg:text-base font-neue-montreal space-y-4 md:space-y-6 lg:space-y-8">
             <p>
-              PrometheusX is more than a project—it's a movement of minds exploring the frontiers of digital consciousness
+              PrometheusX is more than a project — it's a movement of minds exploring the frontiers of digital consciousness
             </p>
             
             <div className="flex items-start gap-3 mb-8">
