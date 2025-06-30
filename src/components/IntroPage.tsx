@@ -13,7 +13,7 @@ const IntroPage: React.FC<IntroPageProps> = ({ onEnter, videoLoaded }) => {
   useEffect(() => {
     const checkGameServer = async () => {
       const controller = new AbortController();
-      setTimeout(() => controller.abort(), 500); // 0.5-second timeout
+      setTimeout(() => controller.abort(), 1000); // 1-second timeout
     
       try {
         await fetch('https://prometheusx.space/', {
