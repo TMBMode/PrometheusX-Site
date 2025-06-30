@@ -35,9 +35,6 @@ const HomePage: React.FC = () => {
         }}
       />
       
-      {/* Black Overlay */}
-      <div className="absolute inset-0 bg-black/10" />
-      
       {/* Animated Network Container */}
       <div ref={containerRef} className="absolute inset-0">
         <NetworkAnimation containerRef={containerRef} />
