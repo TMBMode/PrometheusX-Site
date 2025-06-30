@@ -16,7 +16,7 @@ const IntroPage: React.FC<IntroPageProps> = ({ onEnter, videoLoaded }) => {
       setTimeout(() => controller.abort(), 500); // 0.5-second timeout
     
       try {
-        await fetch('https://game.prometheusx.space/', {
+        await fetch('https://prometheusx.space/', {
           method: 'HEAD',
           mode: 'no-cors',
           signal: controller.signal
