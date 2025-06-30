@@ -125,7 +125,7 @@ const IntroPage: React.FC<IntroPageProps> = ({ onEnter, videoLoaded }) => {
                     src="/resources/Symbol/discord-white.svg" 
                     alt="Discord"
                     className={`absolute inset-0 w-6 h-6 group-hover:-rotate-12 group-hover:-translate-x-1 transition-all duration-300 ${
-                      (gameServerAvailable < 0) ? 'opacity-0' : 'opacity-100'
+                      (gameServerAvailable > -1) ? 'opacity-0' : 'opacity-100'
                     }`}
                   />
                 </div>
